@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds -->
+    <color name="bg_screen">#F7F9FF</color>
+    <color name="bg_surface">#FFFFFF</color>
+
+    <!-- Primary Accent — Blue -->
+    <color name="accent_blue">#00BFA5</color>
+    <color name="accent_blue_dark">#1E40AF</color>
+    <color name="accent_blue_light">#EFF6FF</color>
+    <color name="accent_indigo">#6366F1</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1E293B</color>
+    <color name="text_muted">#9CA3AF</color>
+    <color name="text_dark">#374151</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Input / Borders -->
+    <color name="input_stroke">#3B82F6</color>
+    <color name="border_light">#E5E7EB</color>
+    <color name="border_subtle">#D1D5DB</color>
+
+    <!-- Feedback -->
+    <color name="success_green">#34D399</color>
+    <color name="error_red">#EF4444</color>
+    <color name="success_bg">#EFF6FF</color>
+    <color name="success_stroke">#BFDBFE</color>
+    <color name="success_text">#1D4ED8</color>
+
+    <!-- Material defaults -->
+    <color name="colorPrimary">#3B82F6</color>
+    <color name="colorPrimaryDark">#1E40AF</color>
+    <color name="colorAccent">#6366F1</color>
+</resources>
