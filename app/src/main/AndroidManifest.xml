@@ -12,16 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialConnect">
         <activity
-            android:name=".activity_Home"
-            android:exported="false" />
-        <activity
-            android:name=".activity_ForgotPassword"
-            android:exported="false" />
-        <activity
-            android:name=".activity_SignUp"
-            android:exported="false" />
-        <activity
-            android:name=".activity_Login"
+            android:name=".activity_SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +21,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity_Home"
+            android:exported="false" />
+        <activity
+            android:name=".activity_ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".activity_SignUp"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".activity_Login"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -7,4 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".activity_Home">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="home"
+        android:textSize="50sp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
