@@ -108,7 +108,7 @@ class activity_Login : AppCompatActivity() {
                         } else {
                             // All good — go to Home
                             Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, activity_Home::class.java))
+                            startActivity(Intent(this, activity_Main::class.java))
                             finish()
                         }
                     }

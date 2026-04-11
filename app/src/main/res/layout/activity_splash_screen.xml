@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BFA5">
+
+    <!-- Centered content -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Logo Card -->
+        <androidx.cardview.widget.CardView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="#1A3C4D"
+            app:cardElevation="16dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_logo"
+                app:tint="#00BFA5"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- App Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Social Connect"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="-0.02"
+            android:gravity="center"
+            android:layout_marginTop="24dp"/>
+
+        <!-- Tagline -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONNECT. SHARE. INSPIRE."
+            android:textColor="#CCFAF6"
+            android:textSize="10sp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.15"
+            android:gravity="center"
+            android:layout_marginTop="6dp"/>
+
+    </LinearLayout>
+
+    <!-- Progress bar pinned to bottom -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="56dp"
+        android:paddingHorizontal="40dp">
+
+        <!-- Loading track -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#33FFFFFF"/>
+
+            <View
+                android:id="@+id/loadingBarFill"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:background="#FFFFFF"/>
+
+        </FrameLayout>
+
+        <!-- Loading text -->
+        <TextView
+            android:id="@+id/tvLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOADING"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp"
+            android:fontFamily="@font/poppins_regular"
+            android:letterSpacing="0.2"
+            android:alpha="0.55"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

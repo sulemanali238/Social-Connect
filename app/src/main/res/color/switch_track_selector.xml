@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- ON: teal_green track at 40% opacity -->
+    <item android:color="#6600897A" android:state_checked="true"/>
+    <!-- OFF: #1A1A1D track at 20% opacity -->
+    <item android:color="#331A1A1D"/>
+</selector>

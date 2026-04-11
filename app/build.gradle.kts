@@ -37,14 +37,26 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    // Firebase (correct way)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.perf)
+    implementation(libs.firebase.perf)
+
+    // UI
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:5.0.5")
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
