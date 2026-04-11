@@ -24,6 +24,7 @@
 
         <activity
             android:name=".activity_Main"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".activity_Launchers"

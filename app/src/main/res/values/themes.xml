@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.SocialConnect" parent="Base.Theme.SocialConnect" />
+
+    <style name="NavIndicator">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
+    </style>
+
 </resources>

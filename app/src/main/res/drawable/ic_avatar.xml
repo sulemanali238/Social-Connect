@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="88dp"
-    android:height="88dp"
+    android:width="96dp"
+    android:height="96dp"
     android:viewportWidth="100"
     android:viewportHeight="100">
 
-  <!-- Grey background circle -->
+  <!-- Light gray background circle -->
   <path
-      android:fillColor="#E5E7EB"
+      android:fillColor="#D9D9D9"
       android:pathData="M50,50 m-50,0 a50,50 0 1,0 100,0 a50,50 0 1,0 -100,0"/>
 
-  <!-- Head - small circle centered -->
+  <!-- Head (white) -->
   <path
-      android:fillColor="#9CA3AF"
+      android:fillColor="#FFFFFF"
       android:pathData="M50,35 m-12,0 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0"/>
 
-  <!-- Body - half ellipse, sits right below head, fully inside circle -->
+  <!-- Body (white) -->
   <path
-      android:fillColor="#9CA3AF"
-      android:pathData="M25,80 a25,20 0 0,1 50,0 Z"/>
+      android:fillColor="#FFFFFF"
+      android:pathData="M20,80 a30,22 0 0,1 60,0 Z"/>
 
 </vector>
