@@ -6,7 +6,7 @@
 
     <!-- Primary Accent — Blue -->
     <color name="teal_green">#00BFA5</color>
-    <color name="accent_blue_dark">#1E40AF</color>
+    <color name="grey_nav">#BDBDBD</color>
     <color name="accent_blue_light">#EFF6FF</color>
     <color name="accent_indigo">#6366F1</color>
 

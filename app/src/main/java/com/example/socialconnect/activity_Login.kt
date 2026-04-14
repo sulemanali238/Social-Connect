@@ -10,10 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 
 class activity_Login : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+
     private lateinit var tilEmail: TextInputLayout
     private lateinit var tilPassword: TextInputLayout
     private lateinit var etEmail: TextInputEditText
@@ -28,12 +27,11 @@ class activity_Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         initViews()
-        setupClickListeners()
         setupFocusListeners()
+        setupClickListeners()
     }
-    private fun initViews() {
-        auth = FirebaseAuth.getInstance()
 
+    private fun initViews() {
         tilEmail = findViewById(R.id.tilEmail)
         tilPassword = findViewById(R.id.tilPassword)
         etEmail = findViewById(R.id.etEmail)
@@ -54,9 +52,7 @@ class activity_Login : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        btnBack.setOnClickListener {
-            finish()
-        }
+        btnBack.setOnClickListener { finish() }
 
         signUpText.setOnClickListener {
             startActivity(Intent(this, activity_SignUp::class.java))
@@ -67,61 +63,67 @@ class activity_Login : AppCompatActivity() {
         }
 
         btnLogin.setOnClickListener {
-
-            tilEmail.error    = null
+            tilEmail.error = null
             tilPassword.error = null
 
             if (validateInputs()) {
-
-                val email    = etEmail.text.toString().trim()
+                val email = etEmail.text.toString().trim()
                 val password = etPassword.text.toString().trim()
 
                 setLoadingState(true)
 
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnSuccessListener {
-                        val user = auth.currentUser
-
-                        if (user != null && !user.isEmailVerified) {
-                            // Not verified — sign out and prompt
-                            auth.signOut()
-                            setLoadingState(false)
-                            AlertDialog.Builder(this)
-                                .setTitle("Email Not Verified")
-                                .setMessage(
-                                    "Please verify your email before logging in.\n\n" +
-                                            "Check your inbox for the verification link."
-                                )
-                                .setNegativeButton("Cancel") { dialog, _ ->
-                                    dialog.dismiss()
-                                }
-                                .setPositiveButton("Resend Email") { _, _ ->
-                                    user.sendEmailVerification()
-                                        .addOnSuccessListener {
-                                            Toast.makeText(this, "Verification email resent!", Toast.LENGTH_LONG).show()
-                                        }
-                                        .addOnFailureListener {
-                                            Toast.makeText(this, "Failed to resend: ${it.message}", Toast.LENGTH_SHORT).show()
-                                        }
-                                }.show()
-
-                        } else {
-                            // All good — go to Home
-                            Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this, activity_Main::class.java))
-                            finish()
-                        }
-                    }
-                    .addOnFailureListener {
+                AuthUtil.login(email, password) { success, error ->
+                    if (!success) {
                         setLoadingState(false)
-                        Toast.makeText(this, "Login failed: ${it.message}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this,
+                            "Login failed: $error",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        return@login
                     }
+
+                    if (!AuthUtil.isEmailVerified) {
+                        AuthUtil.logout()
+                        setLoadingState(false)
+
+                        AlertDialog.Builder(this)
+                            .setTitle("Email Not Verified")
+                            .setMessage(
+                                "Please verify your email before logging in.\n\n" +
+                                        "Check your inbox for the verification link."
+                            )
+                            .setNegativeButton("Cancel") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .setPositiveButton("Resend Email") { _, _ ->
+                                AuthUtil.login(email, password) { loggedIn, _ ->
+                                    if (loggedIn) {
+                                        AuthUtil.sendEmailVerification { sent, _ ->
+                                            AuthUtil.logout()
+                                            Toast.makeText(
+                                                this,
+                                                if (sent) "Verification email resent!"
+                                                else "Failed to resend email.",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                        }
+                                    }
+                                }
+                            }
+                            .show()
+                    } else {
+                        Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, activity_Main::class.java))
+                        finish()
+                    }
+                }
             }
         }
-
     }
+
     private fun validateInputs(): Boolean {
-        val email    = etEmail.text.toString().trim()
+        val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
         if (email.isEmpty()) {
@@ -137,11 +139,12 @@ class activity_Login : AppCompatActivity() {
             return false
         }
         if (password.length < 6) {
-            tilPassword.error = "Password must be at least 6 characters"
+            tilPassword.error = "Min 6 characters"
             return false
         }
         return true
     }
+
     private fun setLoadingState(isLoading: Boolean) {
         btnLogin.isEnabled = !isLoading
         tilEmail.isEnabled = !isLoading

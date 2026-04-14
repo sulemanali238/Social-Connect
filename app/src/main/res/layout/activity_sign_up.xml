@@ -1,62 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:overScrollMode="never"
     android:background="#FAFAFA">
 
-    <!-- Big blue circle top-right -->
-    <View
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:background="@drawable/shape_circle_blue_filled"
-        android:alpha="0.13"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-110dp"
-        android:layout_marginEnd="-110dp"/>
-
-    <!-- Medium blue ring top-right -->
-    <View
-        android:layout_width="165dp"
-        android:layout_height="165dp"
-        android:background="@drawable/shape_circle_blue_stroke"
-        android:alpha="0.28"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="-24dp"/>
-
-    <!-- Small indigo circle bottom-left -->
-    <View
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:background="@drawable/shape_circle_blue_filled"
-        android:alpha="0.22"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="-38dp"
-        android:layout_marginStart="-38dp"/>
-
-    <!-- Tiny blue circle mid-left -->
-    <View
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/shape_circle_blue_filled"
-        android:alpha="0.30"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="-16dp"
-        android:layout_marginTop="-80dp"/>
-
-    <!-- Scrollable content -->
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="never">
+        android:layout_height="wrap_content"
+        android:minHeight="100dp">
 
+        <!-- Big blue circle top-right -->
+        <View
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@drawable/shape_circle_blue_filled"
+            android:alpha="0.13"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-110dp"
+            android:layout_marginEnd="-110dp"/>
+
+        <!-- Medium blue ring top-right -->
+        <View
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:background="@drawable/shape_circle_blue_stroke"
+            android:alpha="0.28"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="-24dp"/>
+
+        <!-- Small indigo circle bottom-left -->
+        <View
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/shape_circle_blue_filled"
+            android:alpha="0.22"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="-38dp"
+            android:layout_marginStart="-38dp"/>
+
+        <!-- Tiny blue circle mid-left -->
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/shape_circle_blue_filled"
+            android:alpha="0.30"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="-16dp"
+            android:layout_marginTop="-80dp"/>
+
+        <!-- Main content -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -244,8 +245,7 @@
                 android:textColor="#6B7280"
                 android:textSize="12sp"
                 android:fontFamily="@font/poppins_regular"
-                app:buttonTint="@color/teal_green"
-                />
+                app:buttonTint="@color/teal_green"/>
 
             <!-- Create Account Button -->
             <com.google.android.material.button.MaterialButton
@@ -293,6 +293,7 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

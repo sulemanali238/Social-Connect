@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Avatar -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgNotifAvatar"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_avatar"
+        app:civ_border_width="1.5dp"
+        app:civ_border_color="#E0F5F1"/>
+
+    <!-- Message -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/tvNotifMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="username liked your post"
+            android:textColor="#1E293B"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="2dp"/>
+
+        <TextView
+            android:id="@+id/tvNotifTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2h ago"
+            android:textColor="#9CA3AF"
+            android:textSize="11sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+
+    <!-- Post thumbnail -->
+    <ImageView
+        android:id="@+id/imgNotifPost"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:scaleType="centerCrop"
+        android:background="#F3F4F6"
+        android:visibility="gone"/>
+
+    <!-- Unseen dot -->
+    <View
+        android:id="@+id/viewUnseenDot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/shape_circle_teal"
+        android:layout_marginStart="8dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

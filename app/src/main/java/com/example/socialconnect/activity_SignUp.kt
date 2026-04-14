@@ -12,12 +12,8 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.userProfileChangeRequest
 
 class activity_SignUp : AppCompatActivity() {
-
-    private lateinit var auth: FirebaseAuth
 
     private lateinit var tilFullName: TextInputLayout
     private lateinit var tilUsername: TextInputLayout
@@ -44,8 +40,6 @@ class activity_SignUp : AppCompatActivity() {
     }
 
     private fun initViews() {
-        auth = FirebaseAuth.getInstance()
-
         tilFullName = findViewById(R.id.tilFullName)
         tilUsername = findViewById(R.id.tilUsername)
         tilEmail = findViewById(R.id.tilEmail)
@@ -89,108 +83,137 @@ class activity_SignUp : AppCompatActivity() {
         }
 
         btnSignUp.setOnClickListener {
-            tilFullName.error = null
-            tilUsername.error = null
-            tilEmail.error = null
-            tilPassword.error = null
-            tilConfirmPassword.error = null
-
+            clearErrors()
             if (validateInputs()) {
-                val name     = etFullName.text.toString().trim()
-                val email    = etEmail.text.toString().trim()
+                val fullName = etFullName.text.toString().trim()
+                val username = etUsername.text.toString().trim().lowercase()
+                val email = etEmail.text.toString().trim()
                 val password = etPassword.text.toString().trim()
 
                 setLoadingState(true)
 
-                auth.createUserWithEmailAndPassword(email, password)
-                    .addOnSuccessListener { result ->
-                        val user = result.user
-
-                        val profileUpdates = userProfileChangeRequest {
-                            displayName = name
-                        }
-                        user?.updateProfile(profileUpdates)
-
-                        user?.sendEmailVerification()
-                            ?.addOnSuccessListener {
-                                auth.signOut()
-                                setLoadingState(false)
-
-                                AlertDialog.Builder(this)
-                                    .setTitle("Verify Your Email")
-                                    .setMessage(
-                                        "A verification link has been sent to:\n\n$email\n\n" +
-                                                "Please check your inbox and verify your email " +
-                                                "before logging in."
-                                    )
-                                    .setCancelable(false)
-                                    .setPositiveButton("Go to Login") { _, _ ->
-                                        startActivity(Intent(this, activity_Login::class.java))
-                                        finish()
-                                    }
-                                    .show()
-                            }
-                            ?.addOnFailureListener {
-                                auth.signOut()
-                                setLoadingState(false)
-                                Toast.makeText(
-                                    this,
-                                    "Account created but verification email could not be sent. " +
-                                            "Try logging in and resend verification.",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                                startActivity(Intent(this, activity_Login::class.java))
-                                finish()
-                            }
-                    }
-                    .addOnFailureListener {
-
+                FireStoreUtil.isUsernameTaken(username) { isTaken ->
+                    if (isTaken) {
+                        tilUsername.error = "Username already taken"
                         setLoadingState(false)
-
-                        Toast.makeText(
-                            this,
-                            "Sign up failed: ${it.message}",
-                            Toast.LENGTH_LONG
-                        ).show()
+                    } else {
+                        createAccount(fullName, username, email, password)
                     }
+                }
             }
         }
     }
 
-    private fun validateInputs(): Boolean {
-        val name     = etFullName.text.toString().trim()
-        val email    = etEmail.text.toString().trim()
-        val password = etPassword.text.toString().trim()
-        val confirm  = etConfirmPassword.text.toString().trim()
+    private fun createAccount(
+        fullName: String,
+        username: String,
+        email: String,
+        password: String
+    ) {
+        AuthUtil.signUp(email, password) { success, error ->
+            if (!success) {
+                setLoadingState(false)
+                Toast.makeText(this, "Sign up failed: $error", Toast.LENGTH_LONG).show()
+                return@signUp
+            }
 
-        if (name.isEmpty()) {
-            tilFullName.error = "Enter your name"
-            return false
+            // update display name in Auth
+            AuthUtil.updateDisplayName(fullName) { }
+
+            // create Firestore document
+            val userModel = UserModel(
+                uid = AuthUtil.currentUid,
+                fullName = fullName,
+                username = username,
+                email = email,
+                bio = "",
+                website = "",
+                profileImageBase64 = "",
+                followerCount = 0,
+                followingCount = 0,
+                postCount = 0,
+                createdAt = System.currentTimeMillis()
+            )
+
+            FireStoreUtil.createUser(userModel) { saved, saveError ->
+                if (!saved) {
+                    // delete auth account if Firestore fails
+                    AuthUtil.deleteAccount { }
+                    setLoadingState(false)
+                    Toast.makeText(
+                        this,
+                        "Failed to save user: $saveError",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return@createUser
+                }
+
+                // send verification email
+                AuthUtil.sendEmailVerification { sent, _ ->
+                    AuthUtil.logout()
+                    setLoadingState(false)
+                    if (sent) {
+                        showVerificationDialog(email)
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Account created but verification email failed.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        goToLogin()
+                    }
+                }
+            }
         }
-        if (email.isEmpty()) {
-            tilEmail.error = "Enter your email"
-            return false
-        }
+    }
+
+    private fun showVerificationDialog(email: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Verify Your Email")
+            .setMessage(
+                "A verification link has been sent to:\n\n$email\n\n" +
+                        "Please verify your email before logging in."
+            )
+            .setCancelable(false)
+            .setPositiveButton("Go to Login") { _, _ -> goToLogin() }
+            .show()
+    }
+
+    private fun goToLogin() {
+        startActivity(Intent(this, activity_Login::class.java))
+        finish()
+    }
+
+    private fun clearErrors() {
+        tilFullName.error = null
+        tilUsername.error = null
+        tilEmail.error = null
+        tilPassword.error = null
+        tilConfirmPassword.error = null
+    }
+
+    private fun validateInputs(): Boolean {
+        val name = etFullName.text.toString().trim()
+        val username = etUsername.text.toString().trim()
+        val email = etEmail.text.toString().trim()
+        val password = etPassword.text.toString().trim()
+        val confirm = etConfirmPassword.text.toString().trim()
+
+        if (name.isEmpty()) { tilFullName.error = "Enter your name"; return false }
+        if (username.isEmpty()) { tilUsername.error = "Enter a username"; return false }
+        if (username.length < 3) { tilUsername.error = "Min 3 characters"; return false }
+        if (username.contains(" ")) { tilUsername.error = "No spaces allowed"; return false }
+        if (email.isEmpty()) { tilEmail.error = "Enter your email"; return false }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            tilEmail.error = "Enter a valid email"
-            return false
+            tilEmail.error = "Enter a valid email"; return false
         }
-        if (password.isEmpty()) {
-            tilPassword.error = "Enter a password"
-            return false
-        }
-        if (password.length < 6) {
-            tilPassword.error = "Password must be at least 6 characters"
-            return false
-        }
-        if (confirm != password) {
-            tilConfirmPassword.error = "Passwords do not match"
-            return false
-        }
+        if (password.isEmpty()) { tilPassword.error = "Enter a password"; return false }
+        if (password.length < 6) { tilPassword.error = "Min 6 characters"; return false }
+        if (confirm != password) { tilConfirmPassword.error = "Passwords do not match"; return false }
         if (!cbTerms.isChecked) {
             Snackbar.make(
                 findViewById(android.R.id.content),
-                "Please accept the Terms of Service and Privacy Policy",
+                "Please accept the Terms of Service",
                 Snackbar.LENGTH_LONG
             ).show()
             return false

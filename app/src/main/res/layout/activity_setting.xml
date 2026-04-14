@@ -1,0 +1,1033 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_back"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:tint="#1E293B"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textColor="#1E293B"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="12dp"/>
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F3F4F6"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="32dp">
+
+                <!-- =============================== -->
+                <!-- ACCOUNT SECTION                 -->
+                <!-- =============================== -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACCOUNT"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Profile Preview Row -->
+                        <LinearLayout
+                            android:id="@+id/settingProfilePreview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="14dp"
+                            android:paddingBottom="14dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <!-- Avatar circle -->
+                            <FrameLayout
+                                android:layout_width="44dp"
+                                android:layout_height="44dp">
+
+                                <TextView
+                                    android:id="@+id/tvAvatarInitials"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:text="JD"
+                                    android:gravity="center"
+                                    android:textColor="@color/teal_green"
+                                    android:textSize="15sp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:background="@drawable/ic_avatar"/>
+
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:id="@+id/tvProfileName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="John Doe"
+                                    android:textColor="#1E293B"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/poppins_medium"/>
+
+                                <!--suppress AndroidDomInspection -->
+                                <TextView
+                                    android:id="@+id/tvProfileHandle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@johndoe · Joined Mar 2023"
+                                    android:textColor="#9CA3AF"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/poppins_regular"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"/>
+
+                        <!-- Edit Profile -->
+                        <LinearLayout
+                            android:id="@+id/settingEditProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_person"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Edit Profile"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Change Password -->
+                        <LinearLayout
+                            android:id="@+id/settingChangePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_lock"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Change Password"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Privacy -->
+                        <LinearLayout
+                            android:id="@+id/settingPrivacy"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_privacy"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Privacy"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Linked Email -->
+                        <LinearLayout
+                            android:id="@+id/settingLinkedEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_email"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Linked Email"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACTIVITY &amp; DATA"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Saved Bookmarks -->
+                        <LinearLayout
+                            android:id="@+id/settingSavedBookmarks"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_bookmark_filled"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Saved Bookmarks"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <TextView
+                                android:id="@+id/tvBookmarkCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="24"
+                                android:textColor="#854F0B"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:background="@drawable/bg_search_box"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:layout_marginEnd="20dp"
+                                android:paddingTop="2dp"
+                                android:paddingBottom="2dp"/>
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Liked Posts -->
+                        <LinearLayout
+                            android:id="@+id/settingLikedPosts"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_heart_filled" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Liked Posts"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+                        <!-- Account Insights -->
+                        <LinearLayout
+                            android:id="@+id/settingAccountInsights"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_insight"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Account Insights"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Watch History -->
+                        <LinearLayout
+                            android:id="@+id/settingWatchHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_history"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Watch History"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- =============================== -->
+                <!-- PREFERENCES SECTION             -->
+                <!-- =============================== -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PREFERENCES"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Notifications -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_bell"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Notifications"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchNotifications"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                app:thumbTint="@color/switch_thumb_selector"
+                                app:trackTint="@color/switch_track_selector"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Show in Discovery Feed -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_discovery"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Show in Discovery Feed"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchDiscoveryFeed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                app:thumbTint="@color/switch_thumb_selector"
+                                app:trackTint="@color/switch_track_selector"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Email Digest -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_email"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Email Digest"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchEmailDigest"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                app:thumbTint="@color/switch_thumb_selector"
+                                app:trackTint="@color/switch_track_selector"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Language -->
+                        <LinearLayout
+                            android:id="@+id/settingLanguage"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_language"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Language"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="English"
+                                android:textColor="#854F0B"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:background="@drawable/bg_search_box"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingBottom="2dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- =============================== -->
+                <!-- OTHER SECTION                   -->
+                <!-- =============================== -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OTHER"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Help & Support -->
+                        <LinearLayout
+                            android:id="@+id/settingHelp"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Help &amp; Support"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Rate the App -->
+                        <LinearLayout
+                            android:id="@+id/settingRateApp"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_rate"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Rate the App"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#9CA3AF"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- About & Version -->
+                        <LinearLayout
+                            android:id="@+id/settingAbout"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_about"
+                                app:tint="@color/teal_green"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="About &amp; Version"
+                                android:textColor="#1E293B"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="v2.4.1"
+                                android:textColor="#854F0B"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:background="@drawable/bg_search_box"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingBottom="2dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- =============================== -->
+                <!-- DANGER ZONE SECTION             -->
+                <!-- =============================== -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DANGER ZONE"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Log Out -->
+                        <LinearLayout
+                            android:id="@+id/settingLogout"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_logout"
+                                app:tint="#EF4444"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Log Out"
+                                android:textColor="#EF4444"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginStart="50dp"/>
+
+                        <!-- Delete Account -->
+                        <LinearLayout
+                            android:id="@+id/settingDeleteAccount"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_delete"
+                                app:tint="#EF4444"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Delete Account"
+                                android:textColor="#EF4444"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:layout_marginStart="14dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Permanent"
+                                android:textColor="#A32D2D"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:background="@drawable/bg_search_box"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingBottom="2dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

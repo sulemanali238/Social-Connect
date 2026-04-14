@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Avatar -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgSearchAvatar"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:src="@drawable/ic_avatar"
+        app:civ_border_width="1.5dp"
+        app:civ_border_color="#E0F5F1"/>
+
+    <!-- Name and username -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/tvSearchFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textColor="#1E293B"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <!--suppress AndroidDomInspection -->
+        <TextView
+            android:id="@+id/tvSearchUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@username"
+            android:textColor="#9CA3AF"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="1dp"/>
+
+    </LinearLayout>
+
+    <!-- Follow button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFollow"
+        android:layout_width="80dp"
+        android:layout_height="32dp"
+        android:text="Follow"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_bold"
+        app:backgroundTint="@color/teal_green"
+        app:cornerRadius="8dp"/>
+
+</LinearLayout>

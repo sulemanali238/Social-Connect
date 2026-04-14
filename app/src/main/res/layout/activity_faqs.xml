@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F4F4F4">
+
+    <!-- ── TOP BAR ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_back"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#1E293B"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FAQs"
+            android:textColor="#1E293B"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="12dp"/>
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F3F4F6"/>
+
+    <!-- ── SCROLL CONTENT ── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <!-- ── HEADER CARD ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#00BFA5"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Frequently Asked Questions"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Quick answers to common questions"
+                        android:textColor="#E0F7F4"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Tap any question to expand the answer."
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:lineSpacingExtra="3dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── SECTION LABEL: ACCOUNT ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="6dp"
+                android:text="ACCOUNT"
+                android:textColor="#00BFA5"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"/>
+
+            <!-- ── FAQ CARD: ACCOUNT ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- FAQ Item 1 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="How do I create an account?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq1"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="Download the app, tap 'Sign Up', enter your name, email and a password. Verify your email and you're in! You can also sign up with Google or Facebook."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="52dp"
+                        android:background="#F0F0F0"/>
+
+                    <!-- FAQ Item 2 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="How do I reset my password?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq2"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="On the login screen tap 'Forgot Password?', enter your registered email, and we'll send a reset link. The link expires in 30 minutes."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="52dp"
+                        android:background="#F0F0F0"/>
+
+                    <!-- FAQ Item 3 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="Can I change my username?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq3"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="Yes! Go to Profile → Edit Profile and tap on your username. You can change it once every 14 days. Usernames must be unique and 3–30 characters."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── SECTION LABEL: CONNECTIONS ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="6dp"
+                android:text="CONNECTIONS &amp; FRIENDS"
+                android:textColor="#00BFA5"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"/>
+
+            <!-- ── FAQ CARD: CONNECTIONS ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- FAQ Item 4 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="How do I send a friend request?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq4"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="Search for a user by name or username, open their profile, and tap 'Connect'. They'll receive a notification and can accept or decline your request."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="52dp"
+                        android:background="#F0F0F0"/>
+
+                    <!-- FAQ Item 5 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="How do I block or unfriend someone?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq5"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="Visit their profile, tap the three-dot menu (⋮) in the top-right corner, and choose 'Unfriend' or 'Block'. Blocked users cannot find your profile or message you."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── SECTION LABEL: POSTS & CONTENT ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="6dp"
+                android:text="POSTS &amp; CONTENT"
+                android:textColor="#00BFA5"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"/>
+
+            <!-- ── FAQ CARD: POSTS ── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- FAQ Item 6 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="Who can see my posts?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq6"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="By default, posts are visible to your connections. You can change visibility to 'Public', 'Connections Only', or 'Only Me' each time you create a post, or set a default in Settings → Privacy."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="52dp"
+                        android:background="#F0F0F0"/>
+
+                    <!-- FAQ Item 7 -->
+                    <LinearLayout
+                        android:id="@+id/faqItem7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="How do I report inappropriate content?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq7"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="Tap the three-dot menu (⋮) on any post or comment and select 'Report'. Choose the reason that best fits and submit. Our moderation team reviews all reports within 48 hours."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/faqItem8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:src="@drawable/ic_help"
+                                app:tint="#00BFA5"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="14dp"
+                                android:text="Can I message someone I'm not connected with?"
+                                android:textColor="#1A1A2E"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:id="@+id/arrowFaq8"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_arrow_right"
+                                app:tint="#AAAAAA"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/answerFaq8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:paddingStart="52dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="14dp"
+                            android:text="By default, only connections can message you. Users with a public profile can enable 'Message Requests', letting anyone send a request that you can accept or ignore."
+                            android:textColor="#555555"
+                            android:textSize="13sp"
+                            android:lineSpacingExtra="3dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="52dp"
+                        android:background="#F0F0F0"/>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- ── INFO NOTE ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_info_note"
+                android:orientation="horizontal"
+                android:padding="14dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="#00BFA5"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="Still can't find an answer? Reach out via Help &amp; Support → Email Support and we'll get back to you within 24 hours."
+                    android:textColor="#555555"
+                    android:textSize="12sp"
+                    android:lineSpacingExtra="3dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

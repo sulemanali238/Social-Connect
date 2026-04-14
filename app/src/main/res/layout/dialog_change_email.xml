@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your new email and current password to confirm the change."
+        android:textColor="#666666"
+        android:textSize="13sp"
+        android:layout_marginBottom="16dp"
+        android:lineSpacingExtra="3dp" />
+
+    <!-- New Email -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Email Address"
+        android:textColor="#1A1A2E"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etNewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="e.g. newemail@example.com"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/bg_input_field"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:textColor="#1A1A2E"
+        android:textColorHint="#AAAAAA" />
+
+    <!-- Current Password -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Password"
+        android:textColor="#1A1A2E"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+        android:background="@drawable/bg_input_field"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textSize="14sp"
+        android:textColor="#1A1A2E"
+        android:textColorHint="#AAAAAA" />
+
+</LinearLayout>

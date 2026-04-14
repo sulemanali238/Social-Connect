@@ -9,11 +9,9 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 
 class activity_SplashScreen : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
     private lateinit var tvLoading: TextView
     private lateinit var loadingBarFill: View
     private val handler = Handler(Looper.getMainLooper())
@@ -22,14 +20,12 @@ class activity_SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        auth = FirebaseAuth.getInstance()
         tvLoading = findViewById(R.id.tvLoading)
         loadingBarFill = findViewById(R.id.loadingBarFill)
 
         animateLoadingText()
         animateLoadingBar()
 
-        // Navigate after 3 seconds
         handler.postDelayed({
             navigateNext()
         }, 3000)
@@ -38,7 +34,6 @@ class activity_SplashScreen : AppCompatActivity() {
     private fun animateLoadingText() {
         val dots = listOf("LOADING", "LOADING.", "LOADING..", "LOADING...")
         var index = 0
-
         val runnable = object : Runnable {
             override fun run() {
                 tvLoading.text = dots[index % dots.size]
@@ -52,32 +47,24 @@ class activity_SplashScreen : AppCompatActivity() {
     private fun animateLoadingBar() {
         loadingBarFill.post {
             val parentWidth = (loadingBarFill.parent as View).width
-
             val animator = ValueAnimator.ofInt(0, parentWidth)
             animator.duration = 3000
             animator.interpolator = DecelerateInterpolator()
-
             animator.addUpdateListener { anim ->
                 val params = loadingBarFill.layoutParams
                 params.width = anim.animatedValue as Int
                 loadingBarFill.layoutParams = params
             }
-
             animator.start()
         }
     }
 
     private fun navigateNext() {
-        val user = auth.currentUser
-
-        val intent = if (user != null && user.isEmailVerified) {
-            // Already logged in → go to Home
+        val intent = if (AuthUtil.isLoggedIn && AuthUtil.isEmailVerified) {
             Intent(this, activity_Main::class.java)
         } else {
-            // Not logged in → go to Launcher
             Intent(this, activity_Launchers::class.java)
         }
-
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                 Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
@@ -86,7 +73,6 @@ class activity_SplashScreen : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Clean up handler to prevent memory leaks
         handler.removeCallbacksAndMessages(null)
     }
 }

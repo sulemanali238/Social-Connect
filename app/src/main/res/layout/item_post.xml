@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="8dp">
+
+    <!-- Post Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgPostAvatar"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_avatar"
+            app:civ_border_width="1.5dp"
+            app:civ_border_color="#E0F5F1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:id="@+id/tvPostUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="username"
+                android:textColor="#1E293B"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <TextView
+                android:id="@+id/tvPostTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2h ago"
+                android:textColor="#9CA3AF"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins_regular"/>
+
+        </LinearLayout>
+
+        <!-- More options -->
+        <ImageView
+            android:id="@+id/btnPostMore"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_more_vert"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#9CA3AF"/>
+
+    </LinearLayout>
+
+    <!-- Post Image -->
+    <ImageView
+        android:id="@+id/imgPostContent"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+    <!-- Caption -->
+    <TextView
+        android:id="@+id/tvPostCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="10dp"
+        android:textColor="#1E293B"
+        android:textSize="13sp"
+        android:fontFamily="@font/poppins_regular"
+        android:lineSpacingExtra="2dp"
+        android:visibility="gone"/>
+
+    <!-- Actions row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp">
+
+        <!-- Like -->
+        <ImageView
+            android:id="@+id/btnLike"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_heart_outline"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/tvLikeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#9CA3AF"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="5dp"/>
+
+        <!-- Comment -->
+        <ImageView
+            android:id="@+id/btnComment"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_comment"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginStart="16dp"
+            app:tint="#9CA3AF"/>
+
+        <TextView
+            android:id="@+id/tvCommentCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#9CA3AF"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="5dp"/>
+
+        <!-- Share -->
+        <ImageView
+            android:id="@+id/btnShare"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_arrow_right"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginStart="16dp"
+            app:tint="#9CA3AF"/>
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <!-- Bookmark -->
+        <ImageView
+            android:id="@+id/btnBookmark"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_bookmark_outline"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#9CA3AF"/>
+
+    </LinearLayout>
+
+    <!-- Thin bottom divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F3F4F6"/>
+
+</LinearLayout>

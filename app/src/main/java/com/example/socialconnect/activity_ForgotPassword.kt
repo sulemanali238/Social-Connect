@@ -8,11 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 
 class activity_ForgotPassword : AppCompatActivity() {
-
-    private lateinit var auth: FirebaseAuth
 
     private lateinit var tilEmail: TextInputLayout
     private lateinit var etEmail: TextInputEditText
@@ -30,8 +27,6 @@ class activity_ForgotPassword : AppCompatActivity() {
     }
 
     private fun initViews() {
-        auth = FirebaseAuth.getInstance()
-
         tilEmail = findViewById(R.id.tilEmail)
         etEmail = findViewById(R.id.etEmail)
         btnSendReset = findViewById(R.id.btnSendReset)
@@ -58,23 +53,22 @@ class activity_ForgotPassword : AppCompatActivity() {
 
                 setLoadingState(true)
 
-                auth.sendPasswordResetEmail(email)
-                    .addOnSuccessListener {
-                        setLoadingState(false)
+                AuthUtil.sendPasswordResetEmail(email) { success, error ->
+                    setLoadingState(false)
+                    if (success) {
                         Toast.makeText(
                             this,
                             "If this email is registered, a reset link has been sent",
                             Toast.LENGTH_LONG
                         ).show()
-                    }
-                    .addOnFailureListener {
-                        setLoadingState(false)
+                    } else {
                         Toast.makeText(
                             this,
-                            "Failed: ${it.message}",
+                            "Failed: $error",
                             Toast.LENGTH_LONG
                         ).show()
                     }
+                }
             }
         }
     }
