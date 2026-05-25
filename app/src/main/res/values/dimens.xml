@@ -1,0 +1,8 @@
+<!-- Add these to your existing res/values/dimens.xml -->
+<resources>
+    <dimen name="thumbnail_size">90dp</dimen>
+    <dimen name="thumbnail_margin">6dp</dimen>
+    <dimen name="thumbnail_radius">10dp</dimen>
+    <dimen name="nav_icon_size">25dp</dimen>
+    <dimen name="plus_icon_size">36dp</dimen>
+</resources>

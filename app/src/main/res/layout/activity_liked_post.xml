@@ -58,7 +58,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#00BFA5"
+            app:cardBackgroundColor="@color/teal_green"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -113,7 +113,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="6dp"
         android:text="POSTS YOU LIKED"
-        android:textColor="#00BFA5"
+        android:textColor="@color/teal_green_heading"
         android:textSize="11sp"
         android:textStyle="bold"
         android:letterSpacing="0.12" />
@@ -125,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:indeterminateTint="#00BFA5"
+        android:indeterminateTint="@color/teal_green"
         android:visibility="visible" />
 
     <!-- ── EMPTY STATE ── -->
@@ -169,10 +169,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp"
-        android:clipToPadding="false"
         android:visibility="gone" />
 
 </LinearLayout>

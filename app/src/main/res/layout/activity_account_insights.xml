@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- ── Top Bar ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_back"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:tint="#1E293B"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Account Insights"
+                android:textColor="#1E293B"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="12dp"/>
+
+            <!-- Period chip -->
+            <TextView
+                android:id="@+id/tvPeriodChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This Month"
+                android:textColor="#0F6E56"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/bg_chip_teal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F3F4F6"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="40dp">
+
+                <!-- ══════════════════════════════ -->
+                <!-- HERO PROFILE CARD              -->
+                <!-- ══════════════════════════════ -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <!-- Profile row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- Avatar -->
+                            <FrameLayout
+                                android:layout_width="52dp"
+                                android:layout_height="52dp">
+
+                                <TextView
+                                    android:id="@+id/tvHeroInitials"
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:text="JD"
+                                    android:gravity="center"
+                                    android:textColor="#0F6E56"
+                                    android:textSize="16sp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:background="@drawable/ic_avatar"/>
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imgHeroProfilePic"
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:src="@drawable/ic_avatar"
+                                    android:visibility="gone"/>
+
+                            </FrameLayout>
+
+                            <!-- Name + handle -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:id="@+id/tvHeroName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Loading..."
+                                    android:textColor="#1E293B"
+                                    android:textSize="15sp"
+                                    android:fontFamily="@font/poppins_medium"/>
+
+                                <!--suppress AndroidDomInspection -->
+                                <TextView
+                                    android:id="@+id/tvHeroHandle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@Loading.. · Joined Apr 2026"
+                                    android:textColor="#9CA3AF"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/poppins_regular"/>
+
+                            </LinearLayout>
+
+                            <!-- Health Score badge -->
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:background="@drawable/bg_health_badge"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingStart="6dp"
+                                android:paddingEnd="6dp">
+
+                                <TextView
+                                    android:id="@+id/tvHealthScore"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textColor="#0F6E56"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/poppins_bold"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Health"
+                                    android:textColor="#1D9E75"
+                                    android:textSize="9sp"
+                                    android:fontFamily="@font/poppins_medium"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="14dp"/>
+
+                        <!-- Growth stats row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <include layout="@layout/item_stat_box"
+                                android:id="@+id/statFollowers"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#E1F5EE"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"/>
+
+                            <include layout="@layout/item_stat_box"
+                                android:id="@+id/statFollowing"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#E1F5EE"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"/>
+
+                            <include layout="@layout/item_stat_box"
+                                android:id="@+id/statPosts"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ══════════════════════════════ -->
+                <!-- SECTION: ENGAGEMENT            -->
+                <!-- ══════════════════════════════ -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ENGAGEMENT"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="This Month"
+                            android:textColor="#1E293B"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:layout_marginBottom="12dp"/>
+
+                        <!-- Row 1 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <include layout="@layout/item_engagement_card"
+                                android:id="@+id/engLikes"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="6dp"/>
+
+                            <include layout="@layout/item_engagement_card"
+                                android:id="@+id/engComments"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:background="@android:color/transparent"/>
+
+                        <!-- Row 2 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <include layout="@layout/item_engagement_card"
+                                android:id="@+id/engShares"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="6dp"/>
+
+                            <include layout="@layout/item_engagement_card"
+                                android:id="@+id/engSaves"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="6dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ══════════════════════════════ -->
+                <!-- SECTION: CONTENT PERFORMANCE   -->
+                <!-- ══════════════════════════════ -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTENT PERFORMANCE"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp">
+
+                        <include layout="@layout/item_perf_row" android:id="@+id/perfReach"/>
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginStart="16dp"/>
+                        <include layout="@layout/item_perf_row" android:id="@+id/perfImpressions"/>
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginStart="16dp"/>
+                        <include layout="@layout/item_perf_row" android:id="@+id/perfEngRate"/>
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginStart="16dp"/>
+                        <include layout="@layout/item_perf_row" android:id="@+id/perfTopPost"/>
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F3F4F6" android:layout_marginStart="16dp"/>
+                        <include layout="@layout/item_perf_row" android:id="@+id/perfProfileVisits"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ══════════════════════════════ -->
+                <!-- SECTION: ACTIVITY HEATMAP      -->
+                <!-- ══════════════════════════════ -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACTIVITY HEATMAP"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Most active days (last 4 weeks)"
+                            android:textColor="#1E293B"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:layout_marginBottom="12dp"/>
+
+                        <!-- Day labels -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="4dp">
+
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Mon" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tue" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Wed" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Thu" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Fri" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sat" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sun" android:textSize="9sp" android:textColor="#9CA3AF" android:gravity="center" android:fontFamily="@font/poppins_regular"/>
+
+                        </LinearLayout>
+
+                        <!-- Heatmap grid (programmatically filled) -->
+                        <com.example.socialconnect.HeatmapGridView
+                            android:id="@+id/heatmapGrid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <!-- Legend -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end|center_vertical"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Less"
+                                android:textSize="9sp"
+                                android:textColor="#9CA3AF"
+                                android:fontFamily="@font/poppins_regular"
+                                android:layout_marginEnd="4dp"/>
+
+                            <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/bg_heat_0" android:layout_marginEnd="2dp"/>
+                            <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/bg_heat_1" android:layout_marginEnd="2dp"/>
+                            <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/bg_heat_2" android:layout_marginEnd="2dp"/>
+                            <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/bg_heat_3" android:layout_marginEnd="2dp"/>
+                            <View android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/bg_heat_4" android:layout_marginEnd="4dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="More"
+                                android:textSize="9sp"
+                                android:textColor="#9CA3AF"
+                                android:fontFamily="@font/poppins_regular"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ══════════════════════════════ -->
+                <!-- SECTION: AUDIENCE              -->
+                <!-- ══════════════════════════════ -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AUDIENCE"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <!-- Top regions -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top regions"
+                            android:textColor="#1E293B"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:layout_marginBottom="12dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/containerRegions"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#F3F4F6"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginBottom="14dp"/>
+
+                        <!-- Device type -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device type"
+                            android:textColor="#1E293B"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:layout_marginBottom="10dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <include layout="@layout/item_device_chip"
+                                android:id="@+id/chipMobile"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="5dp"/>
+
+                            <include layout="@layout/item_device_chip"
+                                android:id="@+id/chipDesktop"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"/>
+
+                            <include layout="@layout/item_device_chip"
+                                android:id="@+id/chipTablet"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="5dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ══════════════════════════════ -->
+                <!-- SECTION: POST BREAKDOWN        -->
+                <!-- ══════════════════════════════ -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="POST BREAKDOWN"
+                    android:textColor="@color/teal_green"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:letterSpacing="0.12"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="By post type"
+                            android:textColor="#1E293B"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:layout_marginBottom="14dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/containerPostBreakdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

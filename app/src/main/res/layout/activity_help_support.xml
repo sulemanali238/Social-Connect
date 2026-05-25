@@ -66,7 +66,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="#00BFA5"
+                app:cardBackgroundColor="@color/teal_green"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
 
@@ -90,15 +90,17 @@
                         android:layout_marginTop="6dp"
                         android:text="We're here to help you"
                         android:textColor="#E0F7F4"
-                        android:textSize="14sp"/>
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Browse FAQs, contact our support team, or report an issue. We typically respond within 24 hours."
-                        android:textColor="#FFFFFF"
-                        android:textSize="13sp"
+                        android:textColor="#FFFFFFCC"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="11sp"
                         android:lineSpacingExtra="3dp"/>
 
                 </LinearLayout>
@@ -112,9 +114,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="QUICK HELP"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green_heading"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── QUICK HELP CARD ── -->
@@ -149,7 +151,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:src="@drawable/ic_help"
-                            app:tint="#00BFA5"/>
+                            app:tint="@color/teal_green"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -207,7 +209,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:src="@drawable/ic_info"
-                            app:tint="#00BFA5"/>
+                            app:tint="@color/teal_green"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -265,7 +267,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:src="@drawable/ic_privacy"
-                            app:tint="#00BFA5"/>
+                            app:tint="@color/teal_green"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -311,9 +313,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="CONTACT US"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green_heading"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── CONTACT CARD ── -->
@@ -348,7 +350,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:src="@drawable/ic_email"
-                            app:tint="#00BFA5"/>
+                            app:tint="@color/teal_green"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -406,7 +408,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:src="@drawable/ic_flag"
-                            app:tint="#00BFA5"/>
+                            app:tint="@color/teal_green"/>
 
                         <LinearLayout
                             android:layout_width="0dp"

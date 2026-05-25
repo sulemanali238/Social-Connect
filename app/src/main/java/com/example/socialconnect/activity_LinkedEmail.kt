@@ -47,14 +47,13 @@ class activity_LinkedEmail : AppCompatActivity() {
         return true
     }
     private fun bindViews() {
-
-        btnBack = findViewById(R.id.btnBack)
-        tvCurrentEmailHero = findViewById(R.id.tvCurrentEmailHero)
-        tvCurrentEmail = findViewById(R.id.tvCurrentEmail)
-        tvVerifiedBadge = findViewById(R.id.tvVerifiedBadge)
-        tvVerificationStatus = findViewById(R.id.tvVerificationStatus)
-        ivVerificationIcon = findViewById(R.id.ivVerificationIcon)
-        rowChangeEmail = findViewById(R.id.rowChangeEmail)
+        btnBack               = findViewById(R.id.btnBack)
+        tvCurrentEmailHero    = findViewById(R.id.tvCurrentEmailHero)
+        tvCurrentEmail        = findViewById(R.id.tvCurrentEmail)
+        tvVerifiedBadge       = findViewById(R.id.tvVerifiedBadge)
+        tvVerificationStatus  = findViewById(R.id.tvVerificationStatus)
+        ivVerificationIcon    = findViewById(R.id.ivVerificationIcon)
+        rowChangeEmail        = findViewById(R.id.rowChangeEmail)
         rowResendVerification = findViewById(R.id.rowResendVerification)
     }
 
@@ -66,14 +65,16 @@ class activity_LinkedEmail : AppCompatActivity() {
             return
         }
 
-        val email = user.email ?: "No email linked"
-        tvCurrentEmailHero.text = email
-        tvCurrentEmail.text = email
-
-        // Reload user to get fresh verification state
+        // Wait for fresh data, then update UI once
         user.reload().addOnCompleteListener {
+            val email    = user.email ?: "No email linked"
             val verified = AuthUtil.isEmailVerified
-            updateVerificationUI(verified)
+
+            runOnUiThread {
+                tvCurrentEmailHero.text = email
+                tvCurrentEmail.text     = email
+                updateVerificationUI(verified)
+            }
         }
     }
 
@@ -88,7 +89,7 @@ class activity_LinkedEmail : AppCompatActivity() {
             ivVerificationIcon.setColorFilter(
                 ContextCompat.getColor(this, R.color.teal_green)
             )
-            ivVerificationIcon.setImageResource(R.drawable.shape_story_ring)
+            ivVerificationIcon.setImageResource(R.drawable.shape_story_ring_unseen)
             // Hide resend row if already verified
             rowResendVerification.visibility = View.GONE
         } else {

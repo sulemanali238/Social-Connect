@@ -1,9 +1,12 @@
 package com.example.socialconnect.adapters
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialconnect.ImageUtils
 import com.example.socialconnect.R
@@ -44,13 +47,25 @@ class SearchAdapter(
             holder.itemView.context.getDrawable(R.drawable.ic_avatar)
         )
 
+        // ✅ Firestore call nahi — model se directly state lo
+        applyFollowState(holder, user.isFollowing)
+
         holder.itemView.setOnClickListener { onUserClick(user) }
         holder.btnFollow.setOnClickListener { onFollowClick(user, position) }
     }
 
-    fun updateList(newList: List<UserModel>) {
-        users.clear()
-        users.addAll(newList)
-        notifyDataSetChanged()
+    private fun applyFollowState(holder: SearchViewHolder, isFollowing: Boolean) {
+        if (isFollowing) {
+            holder.btnFollow.text = "Unfollow"
+            holder.btnFollow.backgroundTintList = ColorStateList.valueOf(Color.TRANSPARENT)
+            holder.btnFollow.setTextColor(Color.BLACK)
+            holder.btnFollow.strokeWidth = 2
+            holder.btnFollow.strokeColor = ColorStateList.valueOf("#DBDBDB".toColorInt())
+        } else {
+            holder.btnFollow.text = "Follow"
+            holder.btnFollow.backgroundTintList = ColorStateList.valueOf("#008080".toColorInt())
+            holder.btnFollow.setTextColor(Color.WHITE)
+            holder.btnFollow.strokeWidth = 0
+        }
     }
 }

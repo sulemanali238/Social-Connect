@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#F4F4F4">
 
-    <!-- ── TOP BAR ── -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
@@ -66,7 +66,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="#00BFA5"
+                app:cardBackgroundColor="@color/teal_green"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
 
@@ -81,24 +81,26 @@
                         android:layout_height="wrap_content"
                         android:text="Frequently Asked Questions"
                         android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold"/>
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="Quick answers to common questions"
-                        android:textColor="#E0F7F4"
-                        android:textSize="14sp"/>
+                        android:textColor="#FFFFFFCC"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="13sp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Tap any question to expand the answer."
-                        android:textColor="#FFFFFF"
-                        android:textSize="13sp"
+                        android:textColor="#FFFFFF80"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="11sp"
                         android:lineSpacingExtra="3dp"/>
 
                 </LinearLayout>
@@ -112,9 +114,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="ACCOUNT"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green_heading"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── FAQ CARD: ACCOUNT ── -->
@@ -154,7 +156,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -218,7 +220,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -282,7 +284,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -329,9 +331,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="CONNECTIONS &amp; FRIENDS"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green_heading"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── FAQ CARD: CONNECTIONS ── -->
@@ -371,7 +373,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -435,7 +437,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -482,9 +484,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="POSTS &amp; CONTENT"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green_heading"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── FAQ CARD: POSTS ── -->
@@ -524,7 +526,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -588,7 +590,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -645,7 +647,7 @@
                                 android:layout_width="22dp"
                                 android:layout_height="22dp"
                                 android:src="@drawable/ic_help"
-                                app:tint="#00BFA5"/>
+                                app:tint="@color/teal_green"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -708,7 +710,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@drawable/ic_info"
-                    app:tint="#00BFA5"/>
+                    app:tint="@color/teal_green"/>
 
                 <TextView
                     android:layout_width="0dp"

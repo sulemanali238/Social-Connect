@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BFA5">
+    android:background="#E8F5F0">
+
+    <!-- Top-left corner accent -->
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/bg_corner_tl"
+        android:layout_gravity="top|start"
+        android:contentDescription="@null"/>
+
+    <!-- Bottom-right corner accent -->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bg_corner_br"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="@null"/>
+
+    <!-- Small top-right circle -->
+    <View
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_notif_badge_teal"
+        android:alpha="0.10"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="-30dp"/>
 
     <!-- Centered content -->
     <LinearLayout
@@ -15,45 +43,54 @@
 
         <!-- Logo Card -->
         <androidx.cardview.widget.CardView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="88dp"
             android:layout_height="88dp"
             app:cardCornerRadius="24dp"
-            app:cardBackgroundColor="#1A3C4D"
-            app:cardElevation="16dp">
+            app:cardBackgroundColor="@color/teal_green"
+            app:cardElevation="10dp">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_logo"
-                app:tint="#00BFA5"/>
+                app:tint="#FFFFFF"/>
 
         </androidx.cardview.widget.CardView>
+
+        <!-- Eyebrow -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SOCIAL CONNECT"
+            android:textColor="@color/teal_green"
+            android:textSize="9sp"
+            android:fontFamily="@font/poppins_bold"
+            android:letterSpacing="0.20"
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
 
         <!-- App Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Social Connect"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
-            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/teal_green_heading"
+            android:textSize="56sp"
+            android:fontFamily="@font/billabong"
             android:letterSpacing="-0.02"
             android:gravity="center"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="6dp"/>
 
         <!-- Tagline -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CONNECT. SHARE. INSPIRE."
-            android:textColor="#CCFAF6"
-            android:textSize="10sp"
+            android:text="Connect · Share · Discover"
+            android:textColor="#9CA3AF"
+            android:textSize="12sp"
             android:fontFamily="@font/poppins_regular"
-            android:letterSpacing="0.15"
-            android:gravity="center"
-            android:layout_marginTop="6dp"/>
+            android:gravity="center"/>
 
     </LinearLayout>
 
@@ -65,7 +102,8 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_marginBottom="56dp"
-        android:paddingHorizontal="40dp">
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
 
         <!-- Loading track -->
         <FrameLayout
@@ -75,13 +113,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#33FFFFFF"/>
+                android:background="#331D9E75"/>
 
             <View
                 android:id="@+id/loadingBarFill"
                 android:layout_width="0dp"
                 android:layout_height="3dp"
-                android:background="#FFFFFF"/>
+                android:background="#1D9E75"/>
 
         </FrameLayout>
 
@@ -91,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOADING"
-            android:textColor="#FFFFFF"
+            android:textColor="#1D9E75"
             android:textSize="9sp"
             android:fontFamily="@font/poppins_regular"
             android:letterSpacing="0.2"

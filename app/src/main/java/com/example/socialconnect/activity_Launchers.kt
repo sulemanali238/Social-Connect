@@ -2,6 +2,8 @@ package com.example.socialconnect
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
@@ -11,6 +13,8 @@ class  activity_Launchers : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launchers)
+
+        findViewById<FrameLayout>(R.id.rootLayout).background = TilePatternDrawable(this)
 
         val auth = FirebaseAuth.getInstance()
         if (auth.currentUser != null) {

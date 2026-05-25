@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialConnect">
+        <activity
+            android:name=".PostDetail"
+            android:exported="false" />
+        <activity
+            android:name=".DiscoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StoryEditorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AccountInsights"
+            android:exported="false" />
+        <activity
+            android:name=".StoryViewer"
+            android:exported="false" />
         <activity
             android:name=".activity_ReportProblem"
             android:exported="false" />
@@ -55,7 +75,7 @@
             android:name=".activity_Setting"
             android:exported="false" />
         <activity
-            android:name=".activity_SplashScreen"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,7 +86,7 @@
         <activity
             android:name=".activity_Main"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity_Launchers"
             android:exported="false" />
@@ -76,11 +96,19 @@
         <activity
             android:name=".activity_SignUp"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity_Login"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

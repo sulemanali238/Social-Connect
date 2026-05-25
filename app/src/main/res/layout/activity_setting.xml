@@ -11,7 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Top Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
@@ -42,16 +41,20 @@
 
         </LinearLayout>
 
-        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#F3F4F6"/>
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshSettings"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:overScrollMode="never">
 
             <LinearLayout
@@ -61,15 +64,11 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="32dp">
 
-                <!-- =============================== -->
-                <!-- ACCOUNT SECTION                 -->
-                <!-- =============================== -->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ACCOUNT"
-                    android:textColor="@color/teal_green"
+                    android:textColor="@color/teal_green_heading"
                     android:textSize="11sp"
                     android:fontFamily="@font/poppins_bold"
                     android:letterSpacing="0.12"
@@ -90,7 +89,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Profile Preview Row -->
                         <LinearLayout
                             android:id="@+id/settingProfilePreview"
                             android:layout_width="match_parent"
@@ -105,7 +103,6 @@
                             android:focusable="true"
                             android:background="?attr/selectableItemBackground">
 
-                            <!-- Avatar circle -->
                             <FrameLayout
                                 android:layout_width="44dp"
                                 android:layout_height="44dp">
@@ -120,6 +117,13 @@
                                     android:textSize="15sp"
                                     android:fontFamily="@font/poppins_bold"
                                     android:background="@drawable/ic_avatar"/>
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imgSettingProfilePic"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:src="@drawable/ic_avatar"
+                                    android:visibility="gone"/>
 
                             </FrameLayout>
 
@@ -136,15 +140,14 @@
                                     android:layout_height="wrap_content"
                                     android:text="John Doe"
                                     android:textColor="#1E293B"
-                                    android:textSize="14sp"
+                                    android:textSize="15sp"
                                     android:fontFamily="@font/poppins_medium"/>
 
-                                <!--suppress AndroidDomInspection -->
                                 <TextView
                                     android:id="@+id/tvProfileHandle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@johndoe · Joined Mar 2023"
+                                    android:text="@johndoe · Joined Apr 2026"
                                     android:textColor="#9CA3AF"
                                     android:textSize="12sp"
                                     android:fontFamily="@font/poppins_regular"/>
@@ -158,7 +161,6 @@
                             android:layout_height="1dp"
                             android:background="#F3F4F6"/>
 
-                        <!-- Edit Profile -->
                         <LinearLayout
                             android:id="@+id/settingEditProfile"
                             android:layout_width="match_parent"
@@ -201,7 +203,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Change Password -->
                         <LinearLayout
                             android:id="@+id/settingChangePassword"
                             android:layout_width="match_parent"
@@ -244,7 +245,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Privacy -->
                         <LinearLayout
                             android:id="@+id/settingPrivacy"
                             android:layout_width="match_parent"
@@ -287,7 +287,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Linked Email -->
                         <LinearLayout
                             android:id="@+id/settingLinkedEmail"
                             android:layout_width="match_parent"
@@ -337,7 +336,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ACTIVITY &amp; DATA"
-                    android:textColor="@color/teal_green"
+                    android:textColor="@color/teal_green_heading"
                     android:textSize="11sp"
                     android:fontFamily="@font/poppins_bold"
                     android:letterSpacing="0.12"
@@ -359,7 +358,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Saved Bookmarks -->
                         <LinearLayout
                             android:id="@+id/settingSavedBookmarks"
                             android:layout_width="match_parent"
@@ -392,7 +390,7 @@
                                 android:id="@+id/tvBookmarkCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="24"
+                                android:text="-"
                                 android:textColor="#854F0B"
                                 android:textSize="11sp"
                                 android:fontFamily="@font/poppins_medium"
@@ -416,7 +414,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Liked Posts -->
                         <LinearLayout
                             android:id="@+id/settingLikedPosts"
                             android:layout_width="match_parent"
@@ -457,7 +454,7 @@
                             android:layout_height="1dp"
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
-                        <!-- Account Insights -->
+
                         <LinearLayout
                             android:id="@+id/settingAccountInsights"
                             android:layout_width="match_parent"
@@ -500,62 +497,15 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Watch History -->
-                        <LinearLayout
-                            android:id="@+id/settingWatchHistory"
-                            android:layout_width="match_parent"
-                            android:layout_height="54dp"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="?attr/selectableItemBackground">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@drawable/ic_history"
-                                app:tint="@color/teal_green"/>
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Watch History"
-                                android:textColor="#1E293B"
-                                android:textSize="14sp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:layout_marginStart="14dp"/>
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                app:tint="#9CA3AF"/>
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#F3F4F6"
-                            android:layout_marginStart="50dp"/>
-
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
-                <!-- =============================== -->
-                <!-- PREFERENCES SECTION             -->
-                <!-- =============================== -->
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PREFERENCES"
-                    android:textColor="@color/teal_green"
+                    android:textColor="@color/teal_green_heading"
                     android:textSize="11sp"
                     android:fontFamily="@font/poppins_bold"
                     android:letterSpacing="0.12"
@@ -577,7 +527,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Notifications -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
@@ -618,7 +567,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Show in Discovery Feed -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
@@ -659,7 +607,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Email Digest -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
@@ -700,7 +647,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Language -->
                         <LinearLayout
                             android:id="@+id/settingLanguage"
                             android:layout_width="match_parent"
@@ -748,15 +694,11 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <!-- =============================== -->
-                <!-- OTHER SECTION                   -->
-                <!-- =============================== -->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="OTHER"
-                    android:textColor="@color/teal_green"
+                    android:textColor="@color/teal_green_heading"
                     android:textSize="11sp"
                     android:fontFamily="@font/poppins_bold"
                     android:letterSpacing="0.12"
@@ -778,7 +720,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Help & Support -->
                         <LinearLayout
                             android:id="@+id/settingHelp"
                             android:layout_width="match_parent"
@@ -821,7 +762,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Rate the App -->
                         <LinearLayout
                             android:id="@+id/settingRateApp"
                             android:layout_width="match_parent"
@@ -864,7 +804,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- About & Version -->
                         <LinearLayout
                             android:id="@+id/settingAbout"
                             android:layout_width="match_parent"
@@ -911,10 +850,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- =============================== -->
-                <!-- DANGER ZONE SECTION             -->
-                <!-- =============================== -->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -941,7 +876,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Log Out -->
                         <LinearLayout
                             android:id="@+id/settingLogout"
                             android:layout_width="match_parent"
@@ -978,7 +912,6 @@
                             android:background="#F3F4F6"
                             android:layout_marginStart="50dp"/>
 
-                        <!-- Delete Account -->
                         <LinearLayout
                             android:id="@+id/settingDeleteAccount"
                             android:layout_width="match_parent"
@@ -1027,7 +960,7 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </RelativeLayout>

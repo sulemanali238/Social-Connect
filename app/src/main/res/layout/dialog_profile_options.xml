@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_rounded_dialog"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:elevation="8dp"
+    android:outlineProvider="background">
+
+    <!-- Settings -->
+    <LinearLayout
+        android:id="@+id/optionSettings"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_setting"
+            app:tint="#1A1A2E"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Settings"
+            android:textColor="#1A1A2E"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </LinearLayout>
+
+    <!-- Share Profile -->
+    <LinearLayout
+        android:id="@+id/optionShareProfile"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_share"
+            app:tint="#1A1A2E"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Share Profile"
+            android:textColor="#1A1A2E"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </LinearLayout>
+
+    <!-- Copy Profile Link -->
+    <LinearLayout
+        android:id="@+id/optionCopyLink"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_link"
+            app:tint="#1A1A2E"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Copy Profile Link"
+            android:textColor="#1A1A2E"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/dividerOptions"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="#F3F4F6"
+        android:visibility="gone"/>
+
+    <!-- Report -->
+    <LinearLayout
+        android:id="@+id/optionReport"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_flag"
+            app:tint="#EF4444"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Report"
+            android:textColor="#EF4444"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </LinearLayout>
+
+    <!-- Block -->
+    <LinearLayout
+        android:id="@+id/optionBlock"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_block"
+            app:tint="#EF4444"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:text="Block"
+            android:textColor="#EF4444"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </LinearLayout>
+
+</LinearLayout>

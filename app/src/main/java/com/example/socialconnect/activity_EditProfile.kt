@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import de.hdodenhof.circleimageview.CircleImageView
@@ -31,6 +32,7 @@ class activity_EditProfile : AppCompatActivity() {
 
     private var selectedImageBase64: String? = null
     private var currentUsername: String = ""
+    private var uploadProgressDialog: com.google.android.material.dialog.MaterialAlertDialogBuilder? = null
 
     private val imagePickerLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -105,28 +107,49 @@ class activity_EditProfile : AppCompatActivity() {
     }
 
     private fun openImagePicker() {
-        val intent = Intent(Intent.ACTION_PICK).apply {
-            type = "image/*"
-        }
-        imagePickerLauncher.launch(intent)
+        val options = arrayOf("Choose from Gallery", "Remove Photo")
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Profile Photo")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> {
+                        val intent = Intent(Intent.ACTION_PICK).apply { type = "image/*" }
+                        imagePickerLauncher.launch(intent)
+                    }
+                    1 -> removeProfilePhoto()
+                }
+            }
+            .show()
+    }
+
+    private fun removeProfilePhoto() {
+        selectedImageBase64 = ""  // empty string = remove
+        imgEditAvatar.setImageDrawable(getDrawable(R.drawable.ic_avatar))
     }
 
     private fun processImage(uri: Uri) {
-        Toast.makeText(this, "Processing image...", Toast.LENGTH_SHORT).show()
-        val base64 = ImageUtils.uriToBase64(this, uri)
-        if (base64 != null) {
-            selectedImageBase64 = base64
-            // show preview
-            ImageUtils.loadBase64(
-                base64,
-                imgEditAvatar,
-                getDrawable(R.drawable.ic_avatar)
-            )
-        } else {
-            Toast.makeText(this, "Failed to process image", Toast.LENGTH_SHORT).show()
-        }
-    }
+        val dialog = showUploadProgress()
 
+        android.os.Handler(mainLooper).postDelayed({
+            Thread {
+                val base64 = ImageUtils.uriToBase64(this, uri)
+                runOnUiThread {
+                    dialog.dismiss()
+                    if (base64 != null) {
+                        selectedImageBase64 = base64
+                        ImageUtils.loadBase64(
+                            base64,
+                            imgEditAvatar,
+                            getDrawable(R.drawable.ic_avatar)
+                        )
+                        Toast.makeText(this, "Photo uploaded successfully!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Failed to process image", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }.start()
+        }, 300)
+    }
     private fun validateInputs(): Boolean {
         val name = etFullName.text.toString().trim()
         val username = etUsername.text.toString().trim()
@@ -186,21 +209,38 @@ class activity_EditProfile : AppCompatActivity() {
             "website" to website
         )
 
-        // add image only if changed
-        selectedImageBase64?.let {
-            data["profileImageBase64"] = it
+        if (selectedImageBase64 != null) {
+            data["profileImageBase64"] = selectedImageBase64!!
         }
 
         FireStoreUtil.updateUser(data) { success, error ->
             setLoadingState(false)
             if (success) {
-                CurrentUserCache.clear() // clear so profile reloads fresh
-                Toast.makeText(this, "Profile updated!", Toast.LENGTH_SHORT).show()
-                finish()
-            } else {
-                Toast.makeText(this, "Failed: $error", Toast.LENGTH_LONG).show()
+                val newFullName = etFullName.text.toString().trim()
+
+                FireStoreUtil.updateUserProfileEverywhere(
+                    newFullName = newFullName,
+                    newBase64 = selectedImageBase64  // null if not changed, handled inside
+                )
+
+
+                CurrentUserCache.clear()
+
+                android.os.Handler(mainLooper).postDelayed({
+                    FireStoreUtil.forceServerFetch = true
+                    Toast.makeText(this, "Profile updated!", Toast.LENGTH_SHORT).show()
+                    finish()
+                }, 3000)
             }
         }
+    }
+    private fun showUploadProgress(): androidx.appcompat.app.AlertDialog {
+        val view = layoutInflater.inflate(R.layout.dialog_progress, null)
+        return MaterialAlertDialogBuilder(this)
+            .setView(view)
+            .setCancelable(false)
+            .create()
+            .also { it.show() }
     }
 
     private fun setLoadingState(isLoading: Boolean) {

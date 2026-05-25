@@ -66,7 +66,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="#00BFA5"
+                app:cardBackgroundColor="@color/teal_green"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp">
 
@@ -112,9 +112,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="SETUP YOUR PROFILE"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green_heading"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── STEPS CARD 1 ── -->
@@ -300,9 +300,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="6dp"
                 android:text="START CONNECTING"
-                android:textColor="#00BFA5"
+                android:textColor="@color/teal_green"
                 android:textSize="11sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"
                 android:letterSpacing="0.12"/>
 
             <!-- ── STEPS CARD 2 ── -->
@@ -441,7 +441,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@drawable/ic_info"
-                    app:tint="#00BFA5"/>
+                    app:tint="@color/teal_green"/>
 
                 <TextView
                     android:layout_width="0dp"

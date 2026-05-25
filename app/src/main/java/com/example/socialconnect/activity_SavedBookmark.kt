@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.socialconnect.adapters.PostAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -20,115 +21,98 @@ class activity_SavedBookmark : AppCompatActivity() {
     private lateinit var layoutEmpty: View
     private lateinit var tvBookmarkCount: TextView
 
-    private val db = FirebaseFirestore.getInstance()
-    private val currentUid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+    private val postList = mutableListOf<PostModel>()
+    private val pendingCounterSet = mutableSetOf<String>()
+    private lateinit var postAdapter: PostAdapter
+    private lateinit var postHandler: PostInteractionHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_saved_bookmark)
 
-        supportActionBar?.apply {
-            title = "Saved Bookmarks"
-            setDisplayHomeAsUpEnabled(true)
-        }
-
-        btnBack = findViewById(R.id.btnBack)
-        rvBookmarks = findViewById(R.id.rvBookmarks)
-        progressBar = findViewById(R.id.progressBar)
-        layoutEmpty = findViewById(R.id.layoutEmpty)
+        btnBack         = findViewById(R.id.btnBack)
+        rvBookmarks     = findViewById(R.id.rvBookmarks)
+        progressBar     = findViewById(R.id.progressBar)
+        layoutEmpty     = findViewById(R.id.layoutEmpty)
         tvBookmarkCount = findViewById(R.id.tvBookmarkCount)
 
         btnBack.setOnClickListener { finish() }
         rvBookmarks.layoutManager = LinearLayoutManager(this)
 
+        setupAdapter()
         loadBookmarkedPosts()
     }
 
-    override fun onSupportNavigateUp(): Boolean { finish(); return true }
+    private fun setupAdapter() {
+        postAdapter = PostAdapter(
+            posts           = postList,
+            onLikeClick     = { post, pos -> postHandler.handleLike(post, pos) },
+            onCommentClick  = { post -> postHandler.handleComment(post) },
+            onBookmarkClick = { post, pos -> handleUnbookmark(post, pos) },
+            onShareClick    = { post -> postHandler.handleShare(post) },
+            onAvatarClick   = { _ -> },
+            onDeleteClick   = { post ->
+                postHandler.showDeleteDialog(post) { deleted ->
+                    val idx = postList.indexOfFirst { it.postId == deleted.postId }
+                    if (idx != -1) {
+                        postList.removeAt(idx)
+                        postAdapter.notifyItemRemoved(idx)
+                        updateHeaderCount()
+                    }
+                }
+            }
+        )
+        rvBookmarks.adapter = postAdapter
+        postHandler = PostInteractionHandler(this, postList, postAdapter, pendingCounterSet)
+    }
 
     private fun loadBookmarkedPosts() {
         showLoading()
-
-        db.collection("users")
-            .document(currentUid)
-            .collection("bookmarks")
-            .get()
-            .addOnSuccessListener { result ->
-                val postIds = result.documents.mapNotNull { it.id }
-
-                if (postIds.isEmpty()) {
-                    showEmpty()
-                    return@addOnSuccessListener
+        FireStoreUtil.getBookmarkedPostIds { postIds ->
+            if (postIds.isEmpty()) { showEmpty(); return@getBookmarkedPostIds }
+            FireStoreUtil.getBookMarkedPosts(postIds) { posts ->
+                postHandler.fetchStatusesInParallel(posts) { readyPosts ->
+                    runOnUiThread { showPosts(readyPosts) }
                 }
-
-                fetchPostsByIds(postIds)
             }
-            .addOnFailureListener {
-                showEmpty()
-                Toast.makeText(this, "Failed to load bookmarks", Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    // ── Step 2: fetch each PostModel by its id ───────────────────────────────
-    private fun fetchPostsByIds(postIds: List<String>) {
-        val posts = mutableListOf<PostModel>()
-        var fetched = 0
-
-        for (postId in postIds) {
-            db.collection("posts")
-                .document(postId)
-                .get()
-                .addOnSuccessListener { doc ->
-                    doc.toObject(PostModel::class.java)?.let { posts.add(it) }
-                    fetched++
-                    if (fetched == postIds.size) {
-                        // Sort newest first
-                        val sorted = posts.sortedByDescending { it.createdAt }
-                        showPosts(sorted, isBookmarkMode = true)
-                    }
-                }
-                .addOnFailureListener {
-                    fetched++
-                    if (fetched == postIds.size) {
-                        val sorted = posts.sortedByDescending { it.createdAt }
-                        showPosts(sorted, isBookmarkMode = true)
-                    }
-                }
         }
     }
 
-    // ── Render ────────────────────────────────────────────────────────────────
-    private fun showPosts(posts: List<PostModel>, isBookmarkMode: Boolean) {
+    private fun showPosts(posts: List<PostModel>) {
         progressBar.visibility = View.GONE
+        if (posts.isEmpty()) { showEmpty(); return }
 
-        if (posts.isEmpty()) {
-            showEmpty()
-            return
-        }
-
-        val count = posts.size
-        tvBookmarkCount.text = "$count saved ${if (count == 1) "bookmark" else "bookmarks"}"
+        postList.clear()
+        postList.addAll(posts)
+        postAdapter.notifyDataSetChanged()
 
         rvBookmarks.visibility = View.VISIBLE
         layoutEmpty.visibility = View.GONE
+        updateHeaderCount()
+    }
 
-//        rvBookmarks.adapter = PostAdapter(
-//            posts = posts.toMutableList(),
-//            actionIcon = R.drawable.ic_bookmark_filled,         // filled bookmark
-//            actionTint = "#00BFA5",
-//            onActionClick = { post, position ->
-//                // Unbookmark
-//                FireStoreUtil.bookmarkPost(post, isBookmarked = true) { success ->
-//                    if (success) {
-//                        (rvBookmarks.adapter as PostAdapter).removeAt(position)
-//                        val newCount = (rvBookmarks.adapter as PostAdapter).itemCount
-//                        tvBookmarkCount.text =
-//                            "$newCount saved ${if (newCount == 1) "bookmark" else "bookmarks"}"
-//                        if (newCount == 0) showEmpty()
-//                    }
-//                }
-//            }
-//        )
+    // custom — unbookmark removes item from the saved screen
+    private fun handleUnbookmark(post: PostModel, position: Int) {
+        FireStoreUtil.bookmarkPost(post.postId, true) { success ->
+            if (success) {
+                runOnUiThread {
+                    val idx = postList.indexOfFirst { it.postId == post.postId }
+                    if (idx != -1) {
+                        postList.removeAt(idx)
+                        postAdapter.notifyItemRemoved(idx)
+                        updateHeaderCount()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Failed to remove bookmark", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun updateHeaderCount() {
+        val count = postList.size
+        tvBookmarkCount.text = "$count saved ${if (count == 1) "bookmark" else "bookmarks"}"
+        if (count == 0) showEmpty()
     }
 
     private fun showLoading() {

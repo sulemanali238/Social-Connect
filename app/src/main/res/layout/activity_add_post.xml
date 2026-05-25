@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
+    android:background="#F8FAFC">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Top Bar -->
+        <!-- ── Top Bar ─────────────────────────────────────────── -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="#FFFFFF">
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp">
 
             <ImageView
                 android:id="@+id/btnClose"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_close"
-                android:padding="6dp"
+                android:padding="10dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
@@ -38,11 +39,10 @@
                 android:layout_weight="1"
                 android:text="New Post"
                 android:textColor="#1E293B"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins_medium"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_bold"
                 android:gravity="center"/>
 
-            <!-- Post button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPost"
                 android:layout_width="wrap_content"
@@ -51,71 +51,78 @@
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
                 android:fontFamily="@font/poppins_bold"
+                android:minWidth="72dp"
                 app:backgroundTint="@color/teal_green"
-                app:cornerRadius="10dp"/>
+                app:cornerRadius="18dp"
+                app:elevation="0dp"/>
 
         </LinearLayout>
 
-        <!-- Divider -->
+        <!-- Subtle divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#F3F4F6"/>
+            android:background="#EFF2F5"/>
 
+        <!-- ── Scrollable body ─────────────────────────────────── -->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:overScrollMode="never">
+            android:overScrollMode="never"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
-                <!-- User info row -->
+                <!-- ── User row ──────────────────────────────── -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="12dp"
+                    android:background="#FFFFFF">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgUserAvatar"
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:src="@drawable/ic_avatar"
-                        app:civ_border_width="1.5dp"
+                        app:civ_border_width="2dp"
                         app:civ_border_color="#E0F5F1"/>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
                         android:layout_marginStart="12dp">
 
                         <TextView
-                            android:id="@+id/tvPostUsername"
+                            android:id="@+id/tvPostFullName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="username"
+                            android:text="Name"
                             android:textColor="#1E293B"
                             android:textSize="14sp"
                             android:fontFamily="@font/poppins_bold"/>
 
-                        <!-- Audience selector -->
                         <LinearLayout
                             android:id="@+id/btnAudience"
                             android:layout_width="wrap_content"
-                            android:layout_height="24dp"
+                            android:layout_height="22dp"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
                             android:background="@drawable/bg_audience_selector"
                             android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:layout_marginTop="4dp"
+                            android:paddingEnd="6dp"
+                            android:layout_marginTop="3dp"
                             android:clickable="true"
                             android:focusable="true">
 
@@ -133,8 +140,8 @@
                                 android:layout_height="12dp"
                                 android:src="@drawable/ic_arrow_right"
                                 android:rotation="90"
-                                app:tint="@color/teal_green"
-                                android:layout_marginStart="4dp"/>
+                                app:tint="#00BFA5"
+                                android:layout_marginStart="3dp"/>
 
                         </LinearLayout>
 
@@ -142,94 +149,123 @@
 
                 </LinearLayout>
 
-                <!-- Caption input -->
-                <EditText
-                    android:id="@+id/etCaption"
+                <!-- ── Caption input ────────────────────────── -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:hint="What's on your mind?"
-                    android:textColorHint="#9CA3AF"
-                    android:textColor="#1E293B"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:inputType="textMultiLine|textCapSentences"
-                    android:minLines="4"
-                    android:gravity="top"
-                    android:lineSpacingExtra="4dp"/>
+                    android:orientation="vertical"
+                    android:background="#FFFFFF"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="16dp">
 
-                <!-- Selected image preview -->
-                <FrameLayout
-                    android:id="@+id/layoutImagePreview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:id="@+id/imgPreview"
+                    <EditText
+                        android:id="@+id/etCaption"
                         android:layout_width="match_parent"
-                        android:layout_height="260dp"
-                        android:scaleType="centerCrop"
-                        android:background="#F3F4F6"/>
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="What's on your mind?"
+                        android:textColorHint="#C0CAD4"
+                        android:textColor="#1E293B"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:minLines="5"
+                        android:gravity="top"
+                        android:lineSpacingExtra="4dp"/>
 
-                    <!-- Remove image button -->
-                    <FrameLayout
-                        android:id="@+id/btnRemoveImage"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:background="@drawable/shape_circle_dark_filled"
-                        android:layout_gravity="top|end"
-                        android:layout_margin="8dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:elevation="4dp">
+                </LinearLayout>
 
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_close"
-                            app:tint="#FFFFFF"/>
+                <!-- ── Image tray (horizontal scroll of selected images) -->
+                <LinearLayout
+                    android:id="@+id/layoutImageTray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:background="#FFFFFF"
+                    android:paddingBottom="12dp">
 
-                    </FrameLayout>
+                    <!-- Thin teal accent line -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#E0F5F1"/>
 
-                </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PHOTOS"
+                        android:textColor="#00BFA5"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:letterSpacing="0.12"
+                        android:paddingStart="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"/>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:scrollbars="none"
+                        android:overScrollMode="never"
+                        android:clipToPadding="false">
+
+                        <!-- Image thumbnails injected programmatically -->
+                        <LinearLayout
+                            android:id="@+id/llImageThumbnails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"/>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <!-- Gap -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="#F0F4F8"/>
 
             </LinearLayout>
+
         </androidx.core.widget.NestedScrollView>
 
-        <!-- Divider -->
+        <!-- ── Bottom toolbar ──────────────────────────────────── -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#F3F4F6"/>
+            android:background="#EFF2F5"/>
 
-        <!-- Bottom action bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="12dp"
             android:background="#FFFFFF">
 
-            <!-- Add image -->
+            <!-- Gallery -->
             <LinearLayout
                 android:id="@+id/btnAddImage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:padding="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackgroundBorderless">
+                android:background="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/ic_image"
                     app:tint="@color/teal_green"/>
 
@@ -248,50 +284,61 @@
             <LinearLayout
                 android:id="@+id/btnCamera"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:padding="8dp"
-                android:layout_marginStart="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="12dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackgroundBorderless">
+                android:background="?attr/selectableItemBackground">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/ic_camera"
-                    app:tint="#6B7280"/>
+                    app:tint="#64748B"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Camera"
-                    android:textColor="#6B7280"
+                    android:textColor="#64748B"
                     android:textSize="13sp"
                     android:fontFamily="@font/poppins_medium"
                     android:layout_marginStart="6dp"/>
 
             </LinearLayout>
 
+            <!-- Spacer -->
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
 
-            <!-- Character count -->
+            <!-- Image count badge -->
+            <TextView
+                android:id="@+id/tvImageCountBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textColor="#00BFA5"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingEnd="8dp"/>
+
+            <!-- Char count -->
             <TextView
                 android:id="@+id/tvCharCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0/500"
-                android:textColor="#9CA3AF"
+                android:textColor="#94A3B8"
                 android:textSize="12sp"
-                android:fontFamily="@font/poppins_regular"
-                android:paddingEnd="8dp"/>
+                android:fontFamily="@font/poppins_regular"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

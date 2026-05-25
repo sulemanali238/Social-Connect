@@ -10,6 +10,8 @@ data class UserModel(
     val profileImageBase64: String = "",
     val followerCount: Int = 0,
     val followingCount: Int = 0,
+    var isFollowing: Boolean = false,
     val postCount: Int = 0,
-    val createdAt: Long = System.currentTimeMillis()
+    val createdAt: Long = System.currentTimeMillis(),
+    val fcmToken: String = ""   // ← ADD THIS
 )

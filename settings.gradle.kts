@@ -11,17 +11,17 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
-}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
+
+    // Manual 'versionCatalogs' block yahan se hata diya gaya hai
+    // kyunki Gradle 'gradle/libs.versions.toml' ko khud hi detect kar leta hai.
 }
 
 rootProject.name = "Social Connect"
 include(":app")
- 

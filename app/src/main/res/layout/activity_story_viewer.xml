@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:fitsSystemWindows="false">
+
+    <!-- Full screen story image -->
+    <!-- Full screen story image -->
+    <ImageView
+        android:id="@+id/imgStoryFull"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:scaleType="fitCenter"/>
+
+    <!-- Tap zones — behind UI overlays -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/tapLeft"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <View
+            android:id="@+id/tapRight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <!-- ══════════════════════════════════════════════════════
+         PROGRESS BAR — single track, filled by ValueAnimator
+         Segments are drawn by the animator (each story gets
+         its fair share of the total track width).
+         ══════════════════════════════════════════════════════ -->
+    <!-- Dim track --><!-- Dim track -->
+    <View
+        android:id="@+id/progressTrack"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#33FFFFFF"/>
+
+    <!-- Filled bar (width animated by ValueAnimator) -->
+    <View
+        android:id="@+id/storyProgress"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#FFFFFF"/>
+
+    <!-- Segment dividers container (populated in Kotlin) -->
+    <FrameLayout
+        android:id="@+id/progressDividers"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"/>
+    <!-- Top header: avatar + name + time + 3-dot menu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_gravity="top"
+        android:layout_marginTop="20dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp">
+
+        <ImageView
+            android:id="@+id/btnViewerBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_back"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#FFFFFF"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgViewerAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_avatar"
+            app:civ_border_width="1.5dp"
+            android:layout_marginStart="5dp"
+            app:civ_border_color="#FFFFFF"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:id="@+id/tvViewerFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"/>
+
+            <TextView
+                android:id="@+id/tvViewerTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#CCFFFFFF"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins_regular"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnMoreOptions"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_more_vert"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#FFFFFF"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="34dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@drawable/bg_story_text_bubble"
+        android:gravity="end">
+
+    <TextView
+        android:id="@+id/tvStoryTextOverlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_regular"
+        android:includeFontPadding="false"
+        android:text="Your story text..."/>
+
+    <!-- EYE ICON: Stay fixed on the right -->
+    <LinearLayout
+        android:id="@+id/layoutViewers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_eye"
+            app:tint="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/tvViewCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="2dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="0"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+</FrameLayout>

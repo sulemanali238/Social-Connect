@@ -5,7 +5,8 @@ data class CommentModel(
     val postId: String = "",
     val userId: String = "",
     val username: String = "",
-    val userProfileUrl: String = "",
+    val fullName: String = "",        // ← add this
+    val userProfileBase64: String = "",
     val text: String = "",
     val createdAt: Long = System.currentTimeMillis()
 )

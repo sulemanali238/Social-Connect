@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    gradient_vignette.xml
+    A top-to-transparent + bottom-to-transparent dark overlay so
+    controls stay readable over any photo background.
+    Used as the background of the vignetteOverlay View (match_parent).
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Top fade: dark → transparent -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#00000000"
+                android:startColor="#99000000"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Bottom fade: transparent → dark -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="90"
+                android:endColor="#00000000"
+                android:startColor="#CC000000"
+                android:type="linear" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -7,93 +7,39 @@
     android:orientation="vertical"
     android:background="#FFFFFF">
 
-    <!-- Default top bar -->
+    <!-- Single Search Bar -->
     <LinearLayout
-        android:id="@+id/layoutTopBarDefault"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
-
-        <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_logo"
-            app:tint="@color/teal_green"/>
-
-        <LinearLayout
-            android:id="@+id/searchBox"
-            android:layout_width="0dp"
-            android:layout_height="38dp"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_search_box"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@drawable/ic_search"
-                app:tint="#9CA3AF"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search"
-                android:textColor="#9CA3AF"
-                android:textSize="14sp"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginStart="8dp"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- Active search top bar -->
-    <LinearLayout
-        android:id="@+id/layoutTopBarSearch"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="12dp"
+        android:paddingStart="8dp"
         android:paddingEnd="16dp"
-        android:visibility="gone">
+        android:background="#FFFFFF">
 
         <ImageView
-            android:id="@+id/btnBackSearch"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:id="@+id/btnBackSearchfrg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_back"
-            android:padding="6dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
-            app:tint="#1E293B"/>
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="38dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:background="@drawable/bg_search_box"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp">
+            android:paddingHorizontal="12dp">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_search"
-                app:tint="#9CA3AF"/>
+                app:tint="#008080"/>
 
             <EditText
                 android:id="@+id/etSearch"
@@ -102,40 +48,37 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="Search"
-                android:textColorHint="#9CA3AF"
-                android:textColor="#1A1A1A"
+                android:textColorHint="#94A3B8"
+                android:textColor="#1E293B"
                 android:textSize="14sp"
                 android:fontFamily="@font/poppins_regular"
                 android:inputType="text"
                 android:imeOptions="actionSearch"
                 android:singleLine="true"
-                android:layout_marginStart="8dp"/>
+                android:layout_marginStart="10dp"/>
 
             <ImageView
                 android:id="@+id/btnClearSearch"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/ic_close"
-                app:tint="#9CA3AF"
+                app:tint="#94A3B8"
                 android:visibility="gone"
-                android:clickable="true"
-                android:focusable="true"
                 android:background="?attr/selectableItemBackgroundBorderless"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Search Tabs -->
+    <!-- Search Tabs (hidden until search is submitted) -->
     <LinearLayout
         android:id="@+id/layoutSearchTabs"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:orientation="horizontal"
         android:background="#FFFFFF"
         android:visibility="gone">
 
-        <!-- People tab -->
         <LinearLayout
             android:id="@+id/tabPeople"
             android:layout_width="0dp"
@@ -143,28 +86,25 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
             android:background="?attr/selectableItemBackground">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="People"
-                android:textColor="@color/teal_green"
-                android:textSize="13sp"
-                android:fontFamily="@font/poppins_bold"/>
+                android:textColor="#008080"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"/>
 
             <View
                 android:id="@+id/indicatorPeople"
-                android:layout_width="40dp"
-                android:layout_height="2dp"
-                android:background="@color/teal_green"
-                android:layout_marginTop="2dp"/>
+                android:layout_width="60dp"
+                android:layout_height="2.5dp"
+                android:background="#008080"
+                android:layout_marginTop="4dp"/>
 
         </LinearLayout>
 
-        <!-- Posts tab -->
         <LinearLayout
             android:id="@+id/tabPosts"
             android:layout_width="0dp"
@@ -172,68 +112,52 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
             android:background="?attr/selectableItemBackground">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Posts"
-                android:textColor="#9CA3AF"
-                android:textSize="13sp"
+                android:textColor="#94A3B8"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppins_medium"/>
 
             <View
                 android:id="@+id/indicatorPosts"
-                android:layout_width="40dp"
-                android:layout_height="2dp"
+                android:layout_width="60dp"
+                android:layout_height="2.5dp"
                 android:background="@android:color/transparent"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="4dp"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Divider below tabs -->
+    <!-- Divider -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#F3F4F6"/>
+        android:background="#F1F5F9"/>
 
-    <!-- Results RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSearchResults"
+    <!-- Main Content -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:overScrollMode="never"
-        android:paddingBottom="12dp"
-        android:clipToPadding="false"
-        android:visibility="gone"/>
+        android:layout_height="match_parent">
 
-    <!-- mainContent wrapper -->
-    <LinearLayout
-        android:id="@+id/mainContent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <!-- Empty state -->
+        <!-- 1. Idle state — no recents, nothing typed -->
         <LinearLayout
-            android:id="@+id/layoutEmptyState"
+            android:id="@+id/mainContent"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
             <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:src="@drawable/ic_search"
-                app:tint="#D1D5DB"/>
+                app:tint="#E2E8F0"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -242,19 +166,125 @@
                 android:textColor="#1E293B"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins_bold"
-                android:layout_marginTop="14dp"/>
+                android:layout_marginTop="16dp"
+                android:gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Find and connect with others"
-                android:textColor="#9CA3AF"
+                android:textColor="#94A3B8"
                 android:textSize="13sp"
                 android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginTop="6dp"
+                android:gravity="center"/>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <!-- 2. Recent Searches -->
+        <LinearLayout
+            android:id="@+id/layoutRecentSearches"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent"
+                    android:textColor="#1E293B"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_bold"/>
+
+                <TextView
+                    android:id="@+id/tvClearAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear all"
+                    android:textColor="#00BFA5"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecentSearches"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <!-- 3. Search Results -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearchResults"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="20dp"
+            android:visibility="gone"/>
+
+        <!-- 4. Empty State -->
+        <LinearLayout
+            android:id="@+id/layoutEmptyState"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="40dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivEmptyIcon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_search"
+                app:tint="#E2E8F0"/>
+
+            <TextView
+                android:id="@+id/tvEmptyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No results found"
+                android:textColor="#1E293B"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="16dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tvEmptySubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Try a different search"
+                android:textColor="#94A3B8"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="8dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+        <!-- Loading indicator -->
+        <ProgressBar
+            android:id="@+id/searchProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/teal_green"
+            android:visibility="gone"/>
+
+    </FrameLayout>
 
 </LinearLayout>

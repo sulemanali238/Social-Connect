@@ -2,6 +2,7 @@ package com.example.socialconnect
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -24,7 +25,10 @@ class activity_Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_login)
+        val root = findViewById<View>(R.id.rootLayout) // give your RelativeLayout this id
+        root.background = TilePatternDrawable(this)
 
         initViews()
         setupFocusListeners()

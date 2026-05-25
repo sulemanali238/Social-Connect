@@ -4,72 +4,115 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="12dp"
-    android:paddingBottom="12dp"
-    android:background="?attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true">
+    android:orientation="vertical">
 
-    <!-- Avatar -->
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgNotifAvatar"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:src="@drawable/ic_avatar"
-        app:civ_border_width="1.5dp"
-        app:civ_border_color="#E0F5F1"/>
-
-    <!-- Message -->
-    <LinearLayout
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/notifRow"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="10dp">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="false"
+        android:focusable="false">
 
-        <TextView
-            android:id="@+id/tvNotifMessage"
-            android:layout_width="match_parent"
+        <!-- Unseen dot -->
+        <View
+            android:id="@+id/viewUnseenDot"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:background="@drawable/bg_circle_teal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- Avatar container (avatar + type badge) -->
+        <FrameLayout
+            android:id="@+id/frameAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/viewUnseenDot"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgNotifAvatar"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                app:civ_border_color="#E5E7EB"
+                app:civ_border_width="0.5dp"/>
+
+            <!-- Type badge — bottom right of avatar -->
+            <ImageView
+                android:id="@+id/imgNotifTypeBadge"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/bg_notif_badge"
+                android:padding="4dp"
+                android:scaleType="centerInside"/>
+
+        </FrameLayout>
+
+        <!-- 3-dot menu -->
+        <ImageView
+            android:id="@+id/btnNotifMenu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_more_vert"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#94A3B8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Message + Time -->
+        <LinearLayout
+            android:id="@+id/layoutText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="username liked your post"
-            android:textColor="#1E293B"
-            android:textSize="13sp"
-            android:fontFamily="@font/poppins_regular"
-            android:lineSpacingExtra="2dp"/>
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/frameAvatar"
+            app:layout_constraintEnd_toStartOf="@id/btnNotifMenu"
+            app:layout_constraintStart_toEndOf="@id/frameAvatar"
+            app:layout_constraintTop_toTopOf="@id/frameAvatar">
 
-        <TextView
-            android:id="@+id/tvNotifTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2h ago"
-            android:textColor="#9CA3AF"
-            android:textSize="11sp"
-            android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="2dp"/>
+            <TextView
+                android:id="@+id/tvNotifMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.4"
+                android:maxLines="2"
+                android:textColor="#1A1A1D"
+                android:textSize="14sp"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvNotifTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"/>
 
-    <!-- Post thumbnail -->
-    <ImageView
-        android:id="@+id/imgNotifPost"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:scaleType="centerCrop"
-        android:background="#F3F4F6"
-        android:visibility="gone"/>
+        </LinearLayout>
 
-    <!-- Unseen dot -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <View
-        android:id="@+id/viewUnseenDot"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
-        android:background="@drawable/shape_circle_teal"
-        android:layout_marginStart="8dp"
-        android:visibility="gone"/>
+        android:id="@+id/notifDivider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="76dp"
+        android:background="#E5E7EB"/>
 
 </LinearLayout>

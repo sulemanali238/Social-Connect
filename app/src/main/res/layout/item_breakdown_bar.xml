@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_breakdown_bar.xml — single post-type bar row -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingBottom="12dp">
+
+    <TextView
+        android:id="@+id/tvBarLabel"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Photos"
+        android:textColor="#475569"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_regular"/>
+
+    <!-- Track -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_bar_track">
+
+        <View
+            android:id="@+id/viewBar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_bar_fill"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvBarValue"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textColor="#475569"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="end"/>
+
+</LinearLayout>

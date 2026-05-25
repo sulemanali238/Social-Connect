@@ -14,29 +14,39 @@
     android:clickable="true"
     android:focusable="true">
 
-    <!-- Story ring + avatar -->
+    <!-- Avatar container with rings -->
     <FrameLayout
-        android:layout_width="58dp"
-        android:layout_height="58dp">
+        android:layout_width="62dp"
+        android:layout_height="62dp">
 
-        <!-- Teal ring -->
+        <!-- UNSEEN ring: solid teal gradient — visible by default -->
         <View
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:background="@drawable/shape_story_ring"/>
+            android:id="@+id/ringUnseen"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:background="@drawable/shape_story_ring_unseen"
+            android:visibility="visible"/>
 
-        <!-- Avatar -->
+        <!-- SEEN ring: light gray — hidden by default -->
+        <View
+            android:id="@+id/ringSeen"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:background="@drawable/shape_story_ring_seen"
+            android:visibility="gone"/>
+
+        <!-- Story thumbnail image -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgStoryAvatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_avatar"
             app:civ_border_width="0dp"/>
 
     </FrameLayout>
 
-    <!-- Name and time -->
+    <!-- Username + time / seen -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -45,32 +55,35 @@
         android:layout_marginStart="14dp">
 
         <TextView
-            android:id="@+id/tvStoryUsername"
+            android:id="@+id/tvStoryFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="username"
             android:textColor="#1E293B"
             android:textSize="14sp"
-            android:fontFamily="@font/poppins_bold"/>
+            android:fontFamily="@font/poppins_medium"/>
 
+        <!-- Time shown when UNSEEN -->
         <TextView
             android:id="@+id/tvStoryTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2h ago"
             android:textColor="#9CA3AF"
             android:textSize="12sp"
             android:fontFamily="@font/poppins_regular"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="1dp"
+            android:visibility="visible"/>
 
     </LinearLayout>
 
-    <!-- Seen indicator -->
-    <View
-        android:id="@+id/viewSeenDot"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:background="@drawable/shape_circle_teal"
-        android:visibility="gone"/>
+    <ImageView
+        android:id="@+id/ivMoreOptions"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_more_vert"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        app:tint="#94A3B8"/>
 
 </LinearLayout>

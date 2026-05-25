@@ -4,114 +4,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#E8F5F0"> <!-- Solid Mint Tint -->
 
+  <!-- Fragment Container (Main Content) -->
   <FrameLayout
       android:id="@+id/fragmentContainer"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_above="@id/bottomNavContainer"/>
+      android:layout_above="@id/bottomNavCard"/>
 
-  <LinearLayout
-      android:id="@+id/bottomNavContainer"
+  <!-- STRAIGHT EDGE DOCK: Elevated Bottom Nav -->
+  <com.google.android.material.card.MaterialCardView
+      android:id="@+id/bottomNavCard"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical"
       android:layout_alignParentBottom="true"
-      android:background="#FFFFFF">
+      app:cardBackgroundColor="#FFFFFF"
+      app:cardElevation="16dp"
+      app:cardCornerRadius="0dp"
+      app:strokeWidth="0dp">
 
-    <!-- Top divider -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E5E7EB"/>
-
-    <!-- Indicator lines row -->
     <LinearLayout
-        android:id="@+id/indicatorRow"
+        android:id="@+id/bottomNavContainer"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="0dp"> <!-- Removed padding to lower height -->
 
-      <FrameLayout
-          android:layout_width="0dp"
+      <!-- Indicator lines row -->
+      <LinearLayout
+          android:id="@+id/indicatorRow"
+          android:layout_width="match_parent"
           android:layout_height="3dp"
-          android:layout_weight="1">
-        <View
-            android:id="@+id/indicator0"
-            android:layout_width="50dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_nav_indicator"
-            android:visibility="visible"/>
-      </FrameLayout>
+          android:orientation="horizontal">
 
-      <FrameLayout
-          android:layout_width="0dp"
-          android:layout_height="3dp"
-          android:layout_weight="1">
-        <View
-            android:id="@+id/indicator1"
-            android:layout_width="50dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_nav_indicator"
-            android:visibility="invisible"/>
-      </FrameLayout>
+        <FrameLayout android:layout_width="0dp" android:layout_height="3dp" android:layout_weight="1">
+          <View android:id="@+id/indicator0" android:layout_width="45dp" android:layout_height="3dp"
+              android:layout_gravity="center" android:background="@drawable/bg_nav_indicator" android:visibility="visible"/>
+        </FrameLayout>
 
-      <FrameLayout
-          android:layout_width="0dp"
-          android:layout_height="3dp"
-          android:layout_weight="1">
-        <View
-            android:id="@+id/indicator2"
-            android:layout_width="50dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_nav_indicator"
-            android:visibility="invisible"/>
-      </FrameLayout>
+        <FrameLayout android:layout_width="0dp" android:layout_height="3dp" android:layout_weight="1">
+          <View android:id="@+id/indicator1" android:layout_width="45dp" android:layout_height="3dp"
+              android:layout_gravity="center" android:background="@drawable/bg_nav_indicator" android:visibility="invisible"/>
+        </FrameLayout>
 
-      <FrameLayout
-          android:layout_width="0dp"
-          android:layout_height="3dp"
-          android:layout_weight="1">
-        <View
-            android:id="@+id/indicator3"
-            android:layout_width="50dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_nav_indicator"
-            android:visibility="invisible"/>
-      </FrameLayout>
+        <FrameLayout android:layout_width="0dp" android:layout_height="3dp" android:layout_weight="1">
+          <View android:id="@+id/indicator2" android:layout_width="45dp" android:layout_height="3dp"
+              android:layout_gravity="center" android:background="@drawable/bg_nav_indicator" android:visibility="invisible"/>
+        </FrameLayout>
 
-      <FrameLayout
-          android:layout_width="0dp"
-          android:layout_height="3dp"
-          android:layout_weight="1">
-        <View
-            android:id="@+id/indicator4"
-            android:layout_width="50dp"
-            android:layout_height="3dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bg_nav_indicator"
-            android:visibility="invisible"/>
-      </FrameLayout>
+        <FrameLayout android:layout_width="0dp" android:layout_height="3dp" android:layout_weight="1">
+          <View android:id="@+id/indicator3" android:layout_width="45dp" android:layout_height="3dp"
+              android:layout_gravity="center" android:background="@drawable/bg_nav_indicator" android:visibility="invisible"/>
+        </FrameLayout>
 
+        <FrameLayout android:layout_width="0dp" android:layout_height="3dp" android:layout_weight="1">
+          <View android:id="@+id/indicator4" android:layout_width="45dp" android:layout_height="3dp"
+              android:layout_gravity="center" android:background="@drawable/bg_nav_indicator" android:visibility="invisible"/>
+        </FrameLayout>
+      </LinearLayout>
+
+      <!-- Bottom Nav Menu -->
+      <com.google.android.material.bottomnavigation.BottomNavigationView
+          android:id="@+id/bottomNav"
+          android:layout_width="match_parent"
+          android:layout_height="48dp"
+          android:background="@android:color/transparent"
+          android:clipChildren="false"
+          android:clipToPadding="false"
+          app:itemIconTint="@null"
+          app:itemActiveIndicatorStyle="@null"
+          app:labelVisibilityMode="unlabeled"
+          app:menu="@menu/bottom_nav_menu"
+          app:elevation="0dp"
+          app:itemPaddingTop="0dp"
+          app:itemPaddingBottom="0dp"
+          />
     </LinearLayout>
-
-    <!-- Bottom Nav -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="#FFFFFF"
-        app:itemIconTint="@null"
-        app:itemRippleColor="@null"
-        app:itemActiveIndicatorStyle="@style/NavIndicator"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_nav_menu"
-        app:elevation="0dp"/>
-  </LinearLayout>
+  </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

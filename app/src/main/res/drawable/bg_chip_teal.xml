@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bg_chip_teal.xml — period chip in the top bar -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#E1F5EE"/>
+    <corners android:radius="20dp"/>
+</shape>
